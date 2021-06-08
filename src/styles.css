@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.visible-borders {
+  border: 1px solid black;
+  border-radius: 5px;
+  border-style: dashed;
+}
+
+.center-align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visible-borders.red {
+    border-color: red !important;
+}
+
+.visible-borders.green {
+    border-color: green !important;
+}
+
+.visible-borders.blue {
+    border-color: blue !important;
+}
+
+.box {
+  padding: 50px;
+}

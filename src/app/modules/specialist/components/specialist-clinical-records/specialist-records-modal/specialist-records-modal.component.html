@@ -1,0 +1,26 @@
+<style>
+    #body {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+    }
+</style>
+<div id="modal" tabindex="-1" role="dialog" class="modal fade show" style="display: block;">
+    <div role="document" class="modal-dialog" style="top: 100px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: rgb(237, 237, 237); color: rgb(89, 88, 88);">
+                <h5 id="exampleModalLabel" class="modal-title">Historial Clínico | {{item.firstname}} {{item.lastname}}</h5>
+                <button type="button" class="close" (click)="reject()">
+                    <span>×</span>
+                </button>
+            </div>
+            <div id="body" class="modal-body">
+                <app-specialist-patients-clinical-records [patientId]="item.uid"></app-specialist-patients-clinical-records>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="confirm($event)">Aceptar</button>
+                <!-- <button type="button" class="btn btn-secondary" (click)="reject()">Deshacer</button> -->
+            </div>
+        </div>
+    </div>
+</div>

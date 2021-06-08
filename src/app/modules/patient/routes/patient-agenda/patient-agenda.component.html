@@ -1,0 +1,14 @@
+<h2 id="header" class="display-5">Agenda de Turnos - Clinica OMED</h2>
+<div id="tab-container">
+    <nav id="tab-header">
+        <div id="tab" class="nav nav-tabs">
+            <button class="nav-link active">Turnos</button>
+        </div>
+    </nav>
+    <div id="tab-body" class="tab-content">
+        <div class="tab_container">
+            <app-patient-appointments-grid [appointments]="appointments" [filtered]="appointments" (action)="trigger($event)"></app-patient-appointments-grid>
+        </div>
+    </div>
+</div>
+<app-patient-appointment-modal *ngIf="showModal" [item]="selectedAppointment" [mode]="modalMode" (response)="onModalResponse($event)"></app-patient-appointment-modal>

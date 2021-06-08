@@ -1,0 +1,74 @@
+<div id="container" class="container">
+    <div class="main-body" style="padding-top: 30px;">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="{{user!.photoUrls[0]}}" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>{{user.firstname}} {{user.lastname}}</h4>
+                                <p class="text-secondary mb-1">Obra Social: {{userData.data.obrasocial}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Nombre</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{user.firstname}} {{user.lastname}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{user.username}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">DNI</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{userData.data.dni}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Edad</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{userData.data.age}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <a class="btn btn-info " target="__blank" href="#">Editar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="week-scheduler" class="card h-100">
+            <div id="div-title">
+                <h3 class="mb-1" style="align-self:flex-start;">Historial Clínico</h3>
+            </div>
+            <div id="div-scheduler" *ngIf="enabled">
+                <app-patient-clinical-records-grid [clinicalRecords]="clinicalRecords" [filtered]="clinicalRecords"></app-patient-clinical-records-grid>
+            </div>
+          </div>
+    </div>
+</div>

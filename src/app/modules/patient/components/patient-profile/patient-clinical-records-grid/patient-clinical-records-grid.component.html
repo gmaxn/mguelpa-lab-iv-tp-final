@@ -1,0 +1,117 @@
+<style>
+    :host {
+        display: grid;
+        grid-template-columns: 1px 20px 1px 720px 1px 20px 1px;
+        grid-template-rows: 1px auto 1px auto 1px;
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+
+    .borders {
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+
+    #header {
+        grid-column: 2 / span 5;
+        grid-row: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title {
+        font-weight: 300;
+        font-size: larger;
+        line-height: 1.2;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    #btn_previous {
+        grid-column: 2;
+        grid-row: 4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+
+    #btn_next {
+        grid-column: 6;
+        grid-row: 4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+
+    #date-picker {
+        grid-column: 4;
+        grid-row: 4;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #row {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    #clinical-record-container {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column  ;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .box {
+      padding: 150px;
+      margin: 0 15px 0 15px;
+    }
+</style>
+<div id="header" class="borders">
+  <span class="title">{{clinicalRecords[index].appointment.date | date:'dd/MM/yy'}}</span>
+</div>
+<div id="btn_previous" (click)="previous()" class="borders" ><i class="fas fa-caret-left"></i></div>
+<div id="date-picker" class="borders">
+  <div id="clinical-record-container">
+
+
+     <div class="row mb-2">
+      <div class="form-group col-md-2">
+        <label>Altura</label>
+        <input type="number" value="{{getValues(index, 'height')}}" class="form-control form-control-sm" disabled>
+      </div>
+      <div class="form-group col-md-2">
+        <label>Peso</label>
+        <input type="text" value="{{getValues(index, 'weight')}}" class="form-control form-control-sm" disabled>
+      </div>
+      <div class="form-group col-md-2">
+        <label>Temperatura</label>
+        <input type="text" value="{{getValues(index, 'temperature')}}" class="form-control form-control-sm" disabled>
+      </div>
+      <div class="form-group col-md-2">
+        <label>Presión</label>
+        <input type="text" value="{{getValues(index, 'pressure')}}" class="form-control form-control-sm" disabled>
+      </div>
+    </div>
+
+
+    <div class="row mb-2">
+      <div *ngFor="let field of getDynamicFields(index)" class="form-group col-md-4">
+        <label *ngFor="let item of field | keyvalue">{{item.key}}
+          <input style="margin-top: 5px" type="text" value="{{item.value}}" class="form-control form-control-sm" disabled>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="btn_next" (click)="next()"><i class="fas fa-caret-right"></i></div>
+
