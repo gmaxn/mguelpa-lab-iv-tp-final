@@ -192,7 +192,7 @@ export class PatientRegistrationFormComponent implements OnInit {
             const body = {
               uid: uid,
               email: this.form.get('username').value,
-              subject: "Activacion de usuario - Clinica OMED"
+              subject: "Activación de usuario - Clínica OMED"
             };
 
             this.ms.sendMessage(body).subscribe(() => {

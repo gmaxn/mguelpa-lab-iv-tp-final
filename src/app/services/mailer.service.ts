@@ -8,7 +8,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class MailerService {
 
-  private url = 'https://mguelpa-lab-iv-tp-clinica.herokuapp.com/mailer';
+  private url = 'https://mguelpa-lab-iv-tp-final.herokuapp.com/mailer';
   private countriesUrl = 'https://restcountries.eu/rest/v2';
 
 
