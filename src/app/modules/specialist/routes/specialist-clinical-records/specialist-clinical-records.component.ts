@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserClaims } from 'src/app/models/user-claims';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { SpecialstService } from '../../services/specialst.service';
+import { SpecialistService } from '../../services/specialst.service';
 
 @Component({
   selector: 'app-specialist-clinical-records',
@@ -20,7 +20,7 @@ export class SpecialistClinicalRecordsComponent implements OnInit {
 
   constructor(
     private auth: AuthenticationService,
-    private specService: SpecialstService
+    private specService: SpecialistService
   ) { }
 
   ngOnInit(): void {

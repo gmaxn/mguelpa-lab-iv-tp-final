@@ -1,0 +1,49 @@
+<style>
+    :host {
+        /* border: 1px solid black; */
+        margin: auto;
+        padding: 2px;
+        width: 100%;
+        height: 100%;
+    }
+
+    #frm_signin {
+        /* border: 1px solid black; */
+        width: 100%;
+        height: 100%;
+        padding: 50px;
+    }
+    #user-selector {
+        grid-column: 1 / span 3;
+        grid-row: 1;
+    }
+</style>
+
+<form id="frm_signin" action="" [formGroup]="form">
+    <img src="./../../../../assets/logo2.png" style="height: 100px; justify-self: center; margin-bottom: 20px;" alt="">
+
+    <h5 class="card-title" style="margin-bottom: 15px;" >Acceda a su cuenta</h5>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+        <input type="text" class="form-control" placeholder="Usuario" aria-label="Username" formControlName="username">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+        <input type="password" class="form-control" placeholder="Clave" aria-label="Password" formControlName="password">
+    </div>
+
+    <div class="form-check" style="display: flex; align-items: center; margin-bottom: 20px;">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" (change)="switch()">
+        <label class="form-check-label" for="exampleCheck1">Auto completar datos</label>
+      </div>
+
+    <div class="row">
+        <input class="btn btn-danger col-sm-5" style="margin: 0 5px 20px 5px;" type="submit" value="Ingresar" (click)='signin()'>
+    </div>
+
+    <p>¿No estás registrado? <a routerLink="/enrollment">Ingresa aquí</a>.</p>
+
+
+</form>

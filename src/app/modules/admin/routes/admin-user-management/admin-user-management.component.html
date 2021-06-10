@@ -1,0 +1,47 @@
+<style>
+    :host {
+        display: grid;
+        grid-template-rows: 100px 600px auto;
+        grid-template-columns: auto 800px auto;
+    }
+
+    #tab_container {
+        grid-row: 2;
+        grid-column: 2;
+    }
+
+    #header {
+        grid-row: 1;
+        grid-column: 2;
+        margin:auto;
+    }
+</style>
+<h2 id="header" class="display-5">Portal Administrador - Clinica OMED</h2>
+<div id="tab_container">
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button id="tab_patient" class="nav-link" id="nav-patient-tab" data-bs-toggle="tab" data-bs-target="#nav-patient" type="button" role="tab" aria-controls="nav-patient" aria-selected="false">Pacientes</button>
+            <button id="tab_specialist" class="nav-link" id="nav-specialist-tab" data-bs-toggle="tab" data-bs-target="#nav-specialist" type="button" role="tab" aria-controls="nav-specialist" aria-selected="true">Especialistas</button>
+            <button class="nav-link" id="nav-admin-tab" data-bs-toggle="tab" data-bs-target="#nav-admin" type="button" role="tab" aria-controls="nav-admin" aria-selected="hasRoleAdmin">Administradores</button>
+            <button class="nav-link active" id="nav-manager-tab" data-bs-toggle="tab" data-bs-target="#nav-manager" type="button" role="tab" aria-controls="nav-manager" aria-selected="false">Alta de especialistas</button>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+
+        <div class="tab-pane fade" id="nav-patient" role="tabpanel" aria-labelledby="nav-patient-tab">
+            <app-admin-patient-grid [array]="patients" [filtered]="patients" (downloadCSV)="downloadCSV($event)" (downloadPDF)="downloadPDF($event)"></app-admin-patient-grid>
+        </div>
+
+        <div class="tab-pane fade" id="nav-specialist" role="tabpanel" aria-labelledby="nav-specialist-tab">
+            <!-- <app-specialist-registration-form></app-specialist-registration-form> -->
+        </div>
+      
+        <div *ngIf="hasRoleAdmin" class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <!-- <app-admin-registration-form></app-admin-registration-form> -->
+        </div>
+
+        <div class="tab-pane fade show active" id="nav-manager" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <app-admin-user-manager></app-admin-user-manager>
+        </div>     
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<style>
+    #modal {
+        background-color: rgba(30, 30, 30, .5);
+    }
+</style>
+
+<div id="modal" tabindex="-1" role="dialog" class="modal fade show" style="display: block;">
+    <div role="document" class="modal-dialog" style="top: 100px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: rgb(237, 237, 237); color: rgb(89, 88, 88);">
+                <h5 id="exampleModalLabel" class="modal-title">Confirmación de turno</h5>
+                <button type="button" class="close" (click)="reject()">
+                    <span>×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Acepta el turno para {{item.specialist.firstname}} {{item.specialist.lastname}} especialista en {{item.speciality}} el día {{toDateString(item.date)}}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="confirm($event)">Confirmar</button>
+                <button type="button" class="btn btn-secondary" (click)="reject()">Deshacer</button>
+            </div>
+        </div>
+    </div>
+</div>

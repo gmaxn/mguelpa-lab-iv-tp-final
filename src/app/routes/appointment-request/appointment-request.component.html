@@ -1,0 +1,184 @@
+<style>
+    :host() {
+        display: block;
+        height: 100%;
+        /* border: 1px solid red; */
+    }
+
+    #container {
+        display: flex;
+        /* border: 1px solid green; */
+        height: 100%;
+        width: 956px;
+        margin: auto;
+    }
+
+    #fiter {
+        display: block;
+        width: 100%;
+        /* padding: 0.375rem 0; */
+        margin-bottom: 0;
+        line-height: 1.5;
+        color: white;
+        background-color: transparent !important;
+        border: solid transparent;
+        border-width: 1px 0;
+        padding-right: 1rem;
+        padding-left: auto;
+    }
+
+    input {
+        text-align: center;
+        background-color: transparent !important;
+        border: solid transparent;
+        color: grey;
+        width: 85%;
+        border-bottom: 1px solid transparent;
+    }
+
+    input:hover {
+        outline: none;
+        border-bottom: 1px solid rgba(128, 128, 128, .3);
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    ::-webkit-input-placeholder {
+        text-align: center;
+    }
+
+    :-moz-placeholder {
+        text-align: center;
+    }
+
+    #specialist-list {
+        /* border: 1px solid red; */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 100%;
+        width: 100%;
+    }
+
+    #specialist-card {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+</style>
+
+<div id="container">
+
+    <div id="specialist-list" *ngIf="mode === 'specialist'">
+
+        <input id="filter" type="text" class="display-3 mt-4" placeholder="Buscá a tus especialistas aquí.">
+
+        <div id="specialist-card" class="mt-5">
+
+            <div *ngFor="let specialist of specialists" class="justify-content-center" style="margin: 10px;">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <div class="image">
+                            <img [src]="specialist.claims.photoUrls[0]" class="rounded" height="100">
+                        </div>
+                        <div class="ml-3 w-100">
+                            <h4 class="mb-0 mt-0">{{specialist.claims.firstname}} {{specialist.claims.lastname}}</h4>
+                            <span>Especializaciones: </span>
+                            <p>{{getSpecialitiesNames(specialist.claims.roles).join(' - ')}}</p>
+                            <div class="button mt-2 d-flex flex-row align-items-center"> <button
+                                    class="btn btn-sm btn-outline-primary w-100">Contactar</button> <button
+                                    class="btn btn-sm btn-primary w-100 ml-2"
+                                    (click)="switchMode('specialities', specialist)">Turnos</button> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div *ngIf="mode === 'specialities'" id="specialist-list">
+        <input type="text" name="" id="filter" class="display-3 mt-4" placeholder="Buscá el tipo de atención aquí.">
+        <div class="mt-5" style="display: flex; flex-wrap: wrap; justify-content: space-evenly; align-items: center;">
+            <div *ngFor="let speciality of getSpecialities(selectedSpecialist.claims.roles)"
+                class="justify-content-center" style="margin: 10px;" (click)="selectSpeciality(speciality)">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <div class="image">
+                            <img [src]="speciality.imageUrl" class="rounded" height="100">
+                        </div>
+                        <div class="ml-3 w-100">
+                            <h4 class="mb-0 mt-0">{{speciality.name}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="mode === 'appointment'" id="specialist-list">
+        <div id="container" class="container">
+            <div class="main-body" style="padding-top: 30px;margin:0 auto 0 auto">
+                <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="{{selectedSpecialist.claims.photoUrls[0]}}" alt="Admin"
+                                        class="rounded-circle" width="150">
+                                    <div class="mt-3">
+                                        <h4>{{selectedSpecialist.claims.firstname}}
+                                            {{selectedSpecialist.claims.lastname}}</h4>
+                                        <p class="text-secondary mb-1">Especialista en {{selectedSpeciality.name}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Nombre</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        {{selectedSpecialist.claims.firstname}} {{selectedSpecialist.claims.lastname}}
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        {{selectedSpecialist.claims.username}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="week-scheduler" class="card" style="padding: 15px;">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="title">Disponibilidad Horaria</h3>
+                        </div>
+                    </div>
+                    <app-appointment-selector [selectedSpecialist]="selectedSpecialist.claims"
+                        [speciality]="selectedSpeciality.name"></app-appointment-selector>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button *ngIf="mode !== 'specialist'" class="btn btn-outline-info"
+        style="position:absolute; float:left; bottom:30px; left:30px;" (click)="goBack(mode)">Volver</button>
+</div>

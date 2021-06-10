@@ -1,0 +1,52 @@
+<style>
+    :host() {
+
+        border: 1px solid rgb(222, 226, 230);
+        border-top: none !important;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        display: block;
+
+    }
+    #modal {
+        background-color: rgba(30, 30, 30, .5);
+    }
+</style>
+<div id="header">
+    <div class="input-group mb-1">
+      <input class="form-control" type="text" placeholder="Buscar turnos" [(ngModel)]="filterTerm">
+      <button class="btn btn-outline-secondary" type="button">Buscar</button>
+    </div>
+  </div>
+  <div id="body">
+    <div id="component-wrapper">
+      <div id="person-grid-wrapper">
+        <div id="table-wrapper" class="layout">
+          <table>
+            <thead>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+              <th>Foto 1</th>
+              <th>Foto 2</th>
+              <th>Descargas</th>
+            </thead>
+            <tbody *ngIf="filtered && filtered.length">
+              <tr *ngFor="let patient of filtered">
+                <td>{{ patient.claims.firstname }}</td>
+                <td>{{ patient.claims.lastname }}</td>
+                <td>{{ patient.claims.username }}</td>
+                <td><img src="{{patient.claims.photoUrls[0]}}" alt="" style="height: 50px;"></td>
+                <td><img src="{{patient.claims.photoUrls[1]}}" alt="" style="height: 50px;"></td>
+                <td>
+                    <button class="btn btn-outline-success" style="margin:2px" title="Datos de usuario" (click)="onDownloadCSV(patient)"><i class="fas fa-file-csv fa-1x"></i></button>
+                    <button class="btn btn-outline-danger" style="margin:2px" title="Historia Clínica" (click)="onDownloadPDF(patient)"><i class="fas fa-file-pdf"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

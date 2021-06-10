@@ -57,6 +57,13 @@ export class PatientService {
     );
   }
 
+  public getAllAppointments() {
+    return this.db.collection<Appointment>('/appointments', ref => ref.orderBy("date", "asc")
+    ).valueChanges().pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // public deleteAppointment(patientId: string, appointmentId: string, reazon: string) {
   //   return this.db.collection<any>("users").doc(patientId).collection('appointments').doc(appointmentId).update({ isCancelled: reazon, status: "Cancelado" });
   // }

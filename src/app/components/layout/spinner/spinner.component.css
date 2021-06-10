@@ -1,0 +1,49 @@
+    /* Spinner */
+    .spinner-container {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 10;
+        background-color: rgba(30, 30, 30, .2)
+    }
+
+    .spinner {
+        position: relative;
+        font-size: 300%;
+        top: 50%;
+        left: 50%;
+    }
+
+    .fa-spinner {
+        -webkit-animation: spin 1000ms infinite linear;
+        animation: spin 1000ms infinite linear;
+
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            color: rgba(255, 0, 0, 0.8);
+        }
+
+        100% {
+            color: rgba(93, 0, 255, 0.2);
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            color: rgba(255, 0, 0, 0.8);
+        }
+
+        100% {
+            color: rgba(93, 0, 255, 0.2);
+            -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+        }
+    }

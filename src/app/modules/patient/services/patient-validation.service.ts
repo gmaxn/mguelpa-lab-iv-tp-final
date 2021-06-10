@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { ControlStateObject, ErrorState, ErrorStateObject } from 'src/utils/models/error-state';
+import { ControlStateObject, ErrorState, ErrorStateObject } from 'src/app/models/error-state';
 
 @Injectable({
   providedIn: 'root'

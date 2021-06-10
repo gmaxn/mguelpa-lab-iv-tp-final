@@ -1,0 +1,150 @@
+<style>
+    :host {
+        display: grid;
+        grid-template-columns: 1px 20px 1px auto 1px 20px 1px;
+        grid-template-rows: 1px auto 1px auto 1px;
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+
+    .borders {
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+
+    #header {
+        grid-column: 2 / span 5;
+        grid-row: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title {
+        font-weight: 300;
+        font-size: larger;
+        line-height: 1.2;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    #btn_previous {
+        grid-column: 2;
+        grid-row: 4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+
+    #btn_next {
+        grid-column: 6;
+        grid-row: 4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
+
+    #date-picker {
+        grid-column: 4;
+        grid-row: 4;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #row {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    #pill-container {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        width:100%; 
+        justify-content: space-evenly;
+    }
+
+    .pill-disabled {
+        background-color: grey;
+        color: #f5f5f5;
+    }
+
+    .pill:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 2px 2px rgba(30, 30, 30, 0.2);
+    }
+
+    .current-day {
+        background-color: rgba(111, 190, 208, 0.2);
+        border-radius: 5px;
+    }
+
+    .pill-enabled {
+        background-color: #9acd32;
+    }
+
+    #day {
+        width: 115px;
+        justify-content: space-between;
+        padding: 0 5px 0 5px;
+    }
+
+    .pill {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: x-small;
+        padding: 1px;
+        width: 48px;
+        border: 1px solid #1e1e1e;
+        border-radius: 5px;
+    }
+
+
+    .expired {
+        background-color: grey;
+    }
+
+    .available {
+        background-color: #9acd32;
+    }
+
+    .taken {
+        background-color: red;
+    }
+
+    .not-available {
+        visibility: hidden;
+    }
+</style>
+
+<div id="header" class="borders">
+    <span class="title">{{getMonth()}}</span>
+</div>
+<div id="btn_previous" class="borders" (click)="previousWeek()"><i class="fas fa-caret-left"></i></div>
+<div id="date-picker" class="borders">
+
+    <div id="row" *ngFor="let appointments of appointments;" [ngClass]="{'current-day': isCurrentDay(appointments)}">
+
+        <div id="day" class="center-align">
+            {{getDay(appointments)}}<span>{{getDate(appointments)}}</span>
+        </div>
+
+
+        <div id="pill-container">
+            <div id="pill_{{appointment.date.getTime()}}" class="pill" *ngFor="let appointment of appointments;" [ngClass]="getClass(appointment)" (click)="onSelection(appointment)">
+                {{appointment.date.getTime() | date:'shortTime'}}
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="btn_next" (click)="nextWeek()"><i class="fas fa-caret-right"></i></div>

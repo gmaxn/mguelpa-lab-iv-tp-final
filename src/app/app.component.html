@@ -1,1 +1,36 @@
-<router-outlet></router-outlet>
+<style>
+    :host() {
+        display: grid;
+        grid-template-columns: 250px auto;
+        grid-template-rows: 60px auto;
+        height: 100%;
+    }
+    app-spinner {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 15000;
+    }
+    app-top-nav {
+        grid-row: 1;
+        grid-column: 1 / span 2;
+        z-index: 13000;
+    }
+    app-side-nav {
+        grid-row: 2;
+        grid-column: 1 / span 2;
+        z-index: 12000;
+    }
+    #container {
+        /* border: 1px solid green; */
+        grid-row: 2;
+        grid-column: 1 / span 2;
+    }
+</style>
+
+<app-spinner *ngIf="loading"></app-spinner>
+<app-top-nav (enableSideNav)="onEnableSideNav($event)" [isOpen]="isOpen"></app-top-nav>
+<app-side-nav @openClose (closeNav)="onEnableSideNav($event)" *ngIf="enableSideNav"></app-side-nav>
+<div id="container" [@routeAnimations]="prepareRoute(o)">
+    <router-outlet #o="outlet" (deactivate)='onDeactivate()'></router-outlet>
+</div>

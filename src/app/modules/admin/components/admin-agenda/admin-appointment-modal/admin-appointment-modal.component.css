@@ -1,0 +1,7 @@
+.hoverable:hover {
+    color: rgb(0, 102, 255);
+}
+
+.active {
+    color: rgb(0, 102, 255) !important;
+}

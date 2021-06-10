@@ -1,0 +1,36 @@
+<div id="header">
+    <div class="input-group mb-1">
+        <input class="form-control" type="text" placeholder="Buscar turnos" [(ngModel)]="filterTerm">
+        <button class="btn btn-outline-secondary" type="button">Buscar</button>
+    </div>
+</div>
+<div id="body">
+    <div id="component-wrapper">
+        <div id="person-grid-wrapper">
+            <div id="table-wrapper" class="layout">
+                <table>
+                    <thead>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Foto 1</th>
+                        <th>Foto 2</th>
+                        <th>Historial</th>
+                    </thead>
+                    <tbody *ngIf="filtered && filtered.length">
+                        <tr *ngFor="let patient of filtered">
+                            <td>{{ patient.firstname }}</td>
+                            <td>{{ patient.lastname }}</td>
+                            <td>{{ patient.username }}</td>
+                            <td><img src="{{patient.photoUrls[0]}}" alt="" height="50px"></td>
+                            <td><img src="{{patient.photoUrls[1]}}" alt="" height="50px"></td>
+                            <td>
+                                <button class="btn btn-outline-primary" (click)="openClinicalRecord(patient)"><i class="fas fa-book-medical"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

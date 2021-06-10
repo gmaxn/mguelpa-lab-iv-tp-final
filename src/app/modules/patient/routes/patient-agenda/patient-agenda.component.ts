@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Appointment } from 'src/app/models/appointment';
+import { UserClaims } from 'src/app/models/user-claims';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { SpecialistService } from 'src/modules/specialist/services/specialist.service';
-import { Appointment } from 'src/utils/models/appointment';
-import { UserClaims } from 'src/utils/models/user/user-claims';
 import { PatientService } from '../../services/patient.service';
 
 @Component({

@@ -1,1 +1,95 @@
-<p>signin works!</p>
+<style>
+    :host {
+        height: 100%;
+        display: grid;
+        grid-template-columns: auto 350px auto;
+        grid-template-rows: auto 650px auto;
+        background-color:rgb(255,255,255);
+    }
+
+    @media only screen and (max-width: 1080px) {
+        :host {
+        }
+    }
+
+    .route-container {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+    }
+
+    app-signin-form {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    #user-selector {
+        margin-top: 10px;
+
+        width: 900px;
+
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        border-radius: 10px;
+        padding: 5px;
+        z-index: 9;
+        grid-column: 1 / span 3;
+        grid-row: 1;
+    }
+
+    .frame {
+        margin: 5px;
+    }
+
+    .card-title {
+        font-size: medium;
+    }
+</style>
+
+<div id="user-selector" *ngIf="autoCompletarDatos">
+    <!-- <div style="display: flex; align-items:center; justify-content:center; width: 100%;">
+        <p>Seleccione un especialista</p>
+    </div> -->
+    <div class="frame" style="width: 150px;" (click)="user('patient-1')">
+        <img class="card-img-top img-thumbnail" src="./../../../assets/patient-2.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Paciente 1</h5>
+        </div>
+    </div>
+
+    <div class="frame" style="width: 150px;" (click)="user('patient-2')">
+        <img class="card-img-top img-thumbnail" src="./../../../assets/patient-1.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Paciente 2</h5>
+        </div>
+    </div>
+
+    <div class="frame" style="width: 150px;" (click)="user('specialist-1')">
+        <img class="card-img-top img-thumbnail" src="./../../../assets/doctor-1.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Especialista 1</h5>
+        </div>
+    </div>
+
+    <div class="frame" style="width: 150px;" (click)="user('specialist-2')"> 
+        <img class="card-img-top img-thumbnail" src="./../../../assets/doctor-2.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Especialista 2</h5>
+        </div>
+    </div>
+
+    <div class="frame" style="width: 150px;" (click)="user('admin')">
+        <img class="card-img-top img-thumbnail" src="./../../../assets/admin.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Administrador</h5>
+        </div>
+    </div>
+</div>
+<app-signin-form [mode]="mode$" (autoCompletarDatos)="onAutoCompletarDatos($event)"></app-signin-form>

@@ -1,0 +1,41 @@
+<div id="component-wrapper" style="width:100%">
+    <div id="person-grid-wrapper" class="show-margins" style="width:100%">
+        <div class="layout" id="table-wrapper" style="width:100%">
+            <table *ngIf='appointments && appointments.length' style="width:100%">
+                <thead>
+                    <th>Fecha</th>
+                    <th>Especialista</th>
+                    <th>Especialidad</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let appointment of appointments'>
+
+                        <td>{{ appointment.date.toDate() | date:'medium' }}</td>
+                        <td>{{ appointment.specialist.lastname }} {{ appointment.specialist.firstname }}</td>
+                        <td>{{ appointment.speciality }}</td>
+                        <td>{{ appointment.status }} sdfsdf</td>
+
+                        <td>
+                            <button *ngIf="appointment.status === 'Pendiente'" class="btn btn-outline-danger btn-sm" (click)="cancel(appointment)">Cancelar</button>
+
+                            <button *ngIf="appointment.status !== 'Pendiente'" class="btn btn-outline-info btn-sm" (click)="details(appointment)">Detalles</button>
+                            <!-- si el turno no fue realizado. -->
+                            <!-- <button *ngIf="appointment.status === 'Pendiente'" class="btn btn-outline-danger btn-sm">Cancelar</button> -->
+                            
+                            <!-- si el turno tiene un comentario o reseña. -->
+                            <!-- <button *ngIf="appointment.comments" class="btn btn-outline-info btn-sm">Ver Reseña</button> -->
+                            
+                            <!-- si el especialista marcó el turno como realizado y dejo la reseña. -->
+                            <!-- <button *ngIf="appointment.status === 'Realizado' && appointment.comments" class="btn btn-outline-success btn-sm">Encuesta</button> -->
+                            
+                            <!-- visible una vez que el turno fue realizado. -->
+                            <!-- <button *ngIf="appointment.status === 'Realizado'" class="btn btn-outline-secondary btn-sm">Calificar</button> -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

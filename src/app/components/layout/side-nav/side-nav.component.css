@@ -1,0 +1,48 @@
+:host {
+    background-color: rgba(30, 30, 30, .5);
+    color: whitesmoke;
+}
+
+.links-container {
+    /* border-top: 1px solid whitesmoke; */
+    grid-row: 1;
+    grid-column: 2;
+    height: 100%;
+    width: 250px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: rgb(137, 62, 62);
+    /* background-color: rgb(28, 30, 32); */
+    overflow-x: hidden;
+}
+
+.links-container>div {
+    border-radius: 5px;
+    margin: 2px;
+    padding: 2px;
+    transition: 0.3s;
+}
+
+.links-container> :hover {
+    background-color: whitesmoke;
+    color: black;
+    margin-left: 15px;
+    position: relative;
+}
+
+.links-container> :hover > a {
+    color: black;
+}
+
+.links-container>div>a {
+    text-decoration: none;
+    /* color: #818181; */
+    color: white;
+    font-family: consolas, monospace;
+    font-weight: bold;
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    margin-left: 5px;
+}

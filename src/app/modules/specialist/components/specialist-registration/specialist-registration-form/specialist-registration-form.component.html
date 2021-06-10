@@ -1,0 +1,112 @@
+<style>
+    #frm_patient {
+      border: 1px solid rgb(222, 226, 230);
+      border-radius: 5px;
+      padding: 15px;
+    }
+  
+    .row {
+      margin-bottom: 20px;
+    }
+  </style>
+  
+  <form id="frm_patient" class="needs-validation" [formGroup]="form" novalidate>
+  
+    <div class="form-group row">
+  
+      <div class="col-md-12">
+        <label class="form-label">Email</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+          <input type="text" class="form-control" placeholder="Email" formControlName="username" [ngClass]="{'is-invalid': states.username.class === 'INVALID', 'is-valid': states.username.class === 'VALID'}">
+          <div [ngClass]="{'invalid-feedback': states.username.class === 'INVALID', 'valid-feedback': states.username.class === 'VALID'}">
+            {{states.username.message}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div formGroupName="passwordGroup" class="form-group row">
+      <div class="col-md-6">
+        <label class="form-label">Clave</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-key"></i></span>
+          <input type="password" class="form-control" placeholder="Clave" formControlName="password" [ngClass]="{'is-invalid': states.password.class === 'INVALID', 'is-valid': states.password.class === 'VALID'}">
+          <div [ngClass]="{'invalid-feedback': states.password.class === 'INVALID', 'valid-feedback': states.password.class === 'VALID'}">
+            {{states.password.message}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Confirmación de clave</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-key"></i></span>
+          <input type="password" class="form-control" placeholder="Clave" formControlName="confirm" [ngClass]="{'is-invalid': states.passwordGroup.class === 'INVALID' && form.get('passwordGroup.confirm').dirty, 'is-valid': states.passwordGroup.class === 'VALID' && form.get('passwordGroup.confirm').dirty}">
+          <div [ngClass]="{'invalid-feedback': states.passwordGroup.class === 'INVALID' && form.get('passwordGroup.confirm').dirty, 'valid-feedback': states.passwordGroup.class === 'VALID' && form.get('passwordGroup.confirm').dirty}">
+            {{form.get('passwordGroup.confirm').dirty ? states.passwordGroup.message : ''}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" formControlName="firstname" [ngClass]="{'is-invalid': states.firstname.class === 'INVALID', 'is-valid': states.firstname.class === 'VALID'}">
+        <div [ngClass]="{'invalid-feedback': states.firstname.class === 'INVALID', 'valid-feedback': states.firstname.class === 'VALID'}">
+          {{states.firstname.message}}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Apellido</label>
+        <input type="text" class="form-control" formControlName="lastname" [ngClass]="{'is-invalid': states.lastname.class === 'INVALID', 'is-valid': states.lastname.class === 'VALID'}">
+        <div [ngClass]="{'invalid-feedback': states.lastname.class === 'INVALID', 'valid-feedback': states.lastname.class === 'VALID'}">
+          {{states.lastname.message}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-4">
+        <label class="form-label">DNI</label>
+        <input type="text" class="form-control" formControlName="dni" [ngClass]="{'is-invalid': states.dni.class === 'INVALID', 'is-valid': states.dni.class === 'VALID'}">
+        <div [ngClass]="{'invalid-feedback': states.dni.class === 'INVALID', 'valid-feedback': states.dni.class === 'VALID'}">
+          {{states.dni.message}}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Edad</label>
+        <input type="text" class="form-control" formControlName="age" [ngClass]="{'is-invalid': states.age.class === 'INVALID', 'is-valid': states.age.class === 'VALID'}">
+        <div [ngClass]="{'invalid-feedback': states.age.class === 'INVALID', 'valid-feedback': states.age.class === 'VALID'}">
+          {{states.age.message}}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Especialidad</label>
+        <app-speciality-selector formControlName="speciality"></app-speciality-selector>
+        <input hidden type="text" class="form-control" formControlName="speciality" [ngClass]="{'is-invalid': states.speciality.class === 'INVALID', 'is-valid': states.speciality.class === 'VALID'}">
+        <div [ngClass]="{'invalid-feedback': states.speciality.class === 'INVALID', 'valid-feedback': states.speciality.class === 'VALID'}">
+          {{states.speciality.message}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6" style="display: flex; flex-direction: column;">
+        <label class="form-label">Foto 01:</label>
+        <input id="photo01" type="file" class="form-control" formControlName="photo01" [ngClass]="{'is-invalid': states.photo01.class === 'INVALID', 'is-valid': states.photo01.class === 'VALID'}" (change)="onFileSelection01($event)">
+        <div [ngClass]="{'invalid-feedback': states.photo01.class === 'INVALID', 'valid-feedback': states.photo01.class === 'VALID'}">
+          {{states.photo01.message}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6" style="display: flex; flex-direction: column;">
+        <label class="form-label">Captcha:</label>
+        <app-custom-captcha class="is-invalid" (isValidCaptcha)="captchaValidation($event)"></app-custom-captcha>
+        <div *ngIf="submitted && !isValidCaptcha" [ngClass]="{'invalid-feedback': submitted && !isValidCaptcha}">
+          Debe pasar la validacion del captcha.
+        </div>
+      </div> 
+    </div>
+    <input type="submit" class="btn btn-primary" style="margin-top: 10px;"(click)="submit()" value="Registrar">
+    <button class="btn btn-primary" style="margin: 10px 0 0 10px;" (click)="auto()">Auto</button>
+  </form>
+
+  <!-- <app-prompt @prompt *ngIf="prompt" style="z-index: 9000;"></app-prompt> -->

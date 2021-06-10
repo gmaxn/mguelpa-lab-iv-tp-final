@@ -1,0 +1,60 @@
+table,
+td,
+th {
+  text-align: center;
+  padding: 5px;
+}
+table {
+  margin-bottom: 15px;
+}
+#container {
+  width: 825px;
+}
+.container {
+  width: 825px !important;
+}
+@media (min-width: 768px) {
+  .container,
+  .container-md,
+  .container-sm {
+    max-width: 825px !important;
+  }
+}
+#week-scheduler {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 5px 2fr 5px 2fr 5px;
+  grid-template-rows: 5px auto 5px auto 5px;
+}
+#div-title {
+  display: flex;
+  width: 100%;
+  grid-column: 2;
+  grid-row: 2;
+  padding: 5px;
+}
+.title {
+  font-weight: 300;
+  font-size: large;
+  line-height: 1.2;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+#div-select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  grid-column: 4;
+  grid-row: 2;
+  padding: 5px;
+}
+#div-scheduler {
+  display: block;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  grid-column: 2 / span 3;
+  grid-row: 4;
+  padding: 5px;
+}

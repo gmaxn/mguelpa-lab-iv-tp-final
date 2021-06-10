@@ -1,0 +1,81 @@
+<style>
+    #modal {
+        background-color: rgba(30, 30, 30, .5);
+    }
+</style>
+
+<div id="modal" tabindex="-1" role="dialog" class="modal fade show" style="display: block;">
+    <div *ngIf="mode === 'cancel'" role="document" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: rgb(237, 237, 237); color: rgb(89, 88, 88);">
+                <h5 id="exampleModalLabel" class="modal-title">Cancelación de turno</h5>
+                <button type="button" class="close" (click)="reject()">
+                    <span>×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    
+                    <p> 
+                        {{ item.specialist.speciality }} -
+                        {{ item.specialist.lastname }} {{ item.specialist.firstname }} -
+                        {{ item.date.toDate() | date:'medium' }}
+                    </p>
+                    <label class="form-label" style="font-weight: 500;">¿Desea cancelar el turno?</label>
+                    <textarea class="form-control" [ngClass]="{'is-invalid': isInvalid}" cols="30" rows="3" placeholder="Indicanos el motivo de la cancelación aquí." [(ngModel)]="comments"></textarea>
+                    <div [ngClass]="{'invalid-feedback': isInvalid, 'valid-feedback': !isInvalid}">
+                        Campo requerido.
+                    </div>                
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="confirm($event)">Confirmar</button>
+                <button type="button" class="btn btn-secondary" (click)="reject()">Deshacer</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="mode === 'details'" role="document" class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: rgb(237, 237, 237); color: rgb(89, 88, 88);">
+                <h5 id="exampleModalLabel" class="modal-title">Cancelación de turno</h5>
+                <button type="button" class="close" (click)="reject()">
+                    <span>×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p> 
+                    {{ item.specialist.speciality }} -
+                    {{ item.specialist.lastname }} {{ item.specialist.firstname }} -
+                    {{ item.date.toDate() | date:'medium' }}
+                </p>
+                <div id="tab_container">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button id="tab_review" class="nav-link" [ngClass]="{'active': item.comments, 'disabled': !item.comments}" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Ver Reseña</button>
+                            <button id="tab_specialist" class="nav-link" [ngClass]="{'active': (!item.comments && item.status === 'Realizado')}" id="nav-specialist-tab" data-bs-toggle="tab" data-bs-target="#nav-specialist" type="button" role="tab" aria-controls="nav-specialist" aria-selected="true">Calificar Atención</button>
+                            <button class="nav-link" [ngClass]="{'disabled': !(item.comments && item.status === 'Realizado')}" id="nav-admin-tab" data-bs-toggle="tab" data-bs-target="#nav-admin" type="button" role="tab" aria-controls="nav-admin" aria-selected="hasRoleAdmin">Realizar Encuesta</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div *ngIf="item.comments" class="tab-pane fade" [ngClass]="{'show active' : item.comments}" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
+                            <p>Reseña ...</p>
+                        </div>
+
+                        <div *ngIf="item.status === 'Realizado'" class="tab-pane fade" [ngClass]="{'show active': !item.comments}" id="nav-specialist" role="tabpanel" aria-labelledby="nav-specialist-tab">
+                            <p>Calificar ...</p>
+                        </div>
+
+                        <div *ngIf="item.comments && item.status === 'Realizado'" class="tab-pane fade" id="nav-admin" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <p>Encuesta ...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="confirm($event)">Confirmar</button>
+                <button type="button" class="btn btn-secondary" (click)="reject()">Deshacer</button>
+            </div>
+        </div>
+    </div>
+</div>

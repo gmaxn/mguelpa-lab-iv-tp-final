@@ -15,14 +15,23 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SigninComponent } from './routes/signin/signin.component';
-import { SignupComponent } from './routes/signup/signup.component';
+import { TopNavComponent } from './components/layout/top-nav/top-nav.component';
+import { SideNavComponent } from './components/layout/side-nav/side-nav.component';
+import { SpinnerComponent } from './components/layout/spinner/spinner.component';
+import { SigninFormComponent } from './components/layout/signin-form/signin-form.component';
+import { AppCommonModule } from './app-common.module';
+import { AppointmentRequestComponent } from './routes/appointment-request/appointment-request.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    TopNavComponent,
+    SideNavComponent,
+    SpinnerComponent,
     SigninComponent,
-    SignupComponent
+    SigninFormComponent,
+    AppointmentRequestComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +43,8 @@ import { SignupComponent } from './routes/signup/signup.component';
     AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppCommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

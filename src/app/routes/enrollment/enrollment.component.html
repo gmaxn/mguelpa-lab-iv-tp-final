@@ -1,0 +1,31 @@
+<style>
+
+    :host {
+        align-items: center;
+        justify-content: space-around;
+        width: 800px;
+        margin: auto;
+        display: flex;
+        height: 100%;
+    }
+
+    .frame:hover {
+        background-color: whitesmoke;
+    }
+
+
+</style>
+
+<div class="frame" style="width: 18rem;" (click)="redirect('patient')">
+    <img class="card-img-top img-thumbnail" src="./../../../assets/patient-logo.jpg" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Alta Pacientes</h5>
+    </div>
+</div>
+
+<div class="frame" style="width: 18rem;" (click)="redirect('specialist')">
+    <img class="card-img-top img-thumbnail" src="./../../../assets/doctor-logo.jpg" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Alta Especialistas</h5>
+    </div>
+</div>

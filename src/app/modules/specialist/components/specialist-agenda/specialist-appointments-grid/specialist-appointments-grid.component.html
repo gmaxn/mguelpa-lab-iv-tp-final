@@ -1,0 +1,38 @@
+<div id="header">
+    <div class="input-group mb-1">
+      <input class="form-control" type="text" placeholder="Buscar turnos" [(ngModel)]="filterTerm">
+      <button class="btn btn-outline-secondary" type="button">Buscar</button>
+    </div>
+  </div>
+  <div id="body">
+    <div id="component-wrapper">
+      <div id="person-grid-wrapper">
+        <div id="table-wrapper" class="layout">
+          <table>
+            <thead>
+              <th>Fecha</th>
+              <th>Paciente</th>
+              <th>Especialidad</th>
+              <th>Estado</th>
+              <th>Acción</th>
+            </thead>
+            <tbody *ngIf="filtered && filtered.length">
+              <tr *ngFor="let appointment of filtered">
+                <td>{{ appointment.date | date:'short' }}</td>
+                <td>{{ appointment.patient.lastname }} {{ appointment.patient.firstname }}</td>
+                <td>{{ appointment.speciality }}</td>
+                <td>{{ appointment.status }}</td>
+                <td>
+                  <button *ngIf="appointment.status === 'taken'" title="Aceptar" class="btn btn-success btn-sm" (click)="trigger('accept', appointment)" style="margin:2px;"><i class="fas fa-calendar-check"></i></button>
+                  <button *ngIf="appointment.status === 'taken'" title="Rechazar" class="btn btn-danger btn-sm" (click)="trigger('reject', appointment)" style="margin:2px;"><i class="fas fa-hand-paper"></i></button>
+                  <button *ngIf="appointment.status === 'accepted'" title="Cancelar" class="btn btn-danger btn-sm" (click)="trigger('cancel', appointment)" style="margin:2px;"><i class="fas fa-calendar-times"></i></button>
+                  <button *ngIf="appointment.status === 'accepted'" title="Finalizar" class="btn btn-success btn-sm" (click)="trigger('finalize', appointment)" style="margin:2px;"><i class="fas fa-hourglass-end"></i></button>
+                  <button *ngIf="appointment.review" title="Comentarios" class="btn btn-warning btn-sm" (click)="trigger('review', appointment)" style="margin:2px;"><i class="fas fa-comments"></i></button>              
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

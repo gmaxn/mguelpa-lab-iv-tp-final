@@ -1,0 +1,110 @@
+<style>
+    #nav {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        height: 58px;
+        background-color: whitesmoke;
+        box-shadow: 0px 2px rgba(30,30,30,.2);
+    }
+
+    #btn_signin {
+        align-self: flex-start;
+        margin: auto 5px auto 5px;
+        padding: 5px;
+        height: 58px;
+        width: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #btn_sidenav {
+        align-self: flex-start;
+        margin: auto 5px auto 5px;
+        padding: 5px;
+        height: 58px;
+        width: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #mid_bar {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #btn_nav {
+        align-self: flex-start;
+        margin: auto 5px auto 5px;
+        padding: 5px;
+        border-radius: 50%;
+    }
+
+    #btn_home {
+        align-self: flex-start;
+        margin: auto 5px auto 5px;
+    }
+
+    .my_btn {
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        background-color: whitesmoke;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        outline: none;
+    }
+
+    .my_btn:hover {
+        background-color: rgb(228, 228, 228);
+    }
+
+    .my_btn:focus {
+        color: #fff;
+        background-color: whitesmoke;
+        background-color: rgba(245, 245, 245, 0.825);
+    }
+
+    .my_btn:active,
+    .my_btn.active {
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+
+<div id="nav">
+
+    <div id="btn_sidenav" class="my_btn" (click)="showSideNav()" *ngIf="logged" >
+        <i class="fas fa-bars fa-1x"></i>
+    </div>
+
+    <div *ngIf="!logged" id="btn_signin" class="my_btn" (click)="goToSigninPage()" style="width:100px !important;">
+        <span style="margin-right: 10px;">Login</span> <img src="./../../../../assets/users.png" style="height:20px;">
+    </div>
+    <div *ngIf="logged" id="btn_signin" class="my_btn" (click)="signout()" style="width:100px !important;">
+        <span style="margin-right: 10px;">Logout</span> <img src="./../../../../assets/users.png" style="height:20px;">
+    </div>
+    <div id="btn_signin" class="my_btn" (click)="goToSignupPage()" style="width:100px !important;">
+        <span style="margin-right: 10px;"> Registro</span><i class="fas fa-user-plus"></i>
+    </div>
+    <div id="mid_bar">
+        <p style="margin:auto" *ngIf="user">Bienvenido {{user?.firstname}} {{user?.lastname}}</p>
+    </div>
+
+
+    <div id="btn_home" class="my_btn" routerLink="home">
+        <img src="./../../../../assets/logo.png" style="height:42px">
+    </div>
+</div>

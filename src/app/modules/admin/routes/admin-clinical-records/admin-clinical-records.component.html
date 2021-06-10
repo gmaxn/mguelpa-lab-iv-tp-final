@@ -1,0 +1,14 @@
+<h2 id="header" class="display-5">Historial Clínico | Clinica OMED</h2>
+<div id="tab-container">
+    <nav id="tab-header">
+        <div id="tab" class="nav nav-tabs">
+            <button class="nav-link active">Pacientes</button>
+        </div>
+    </nav>
+    <div id="tab-body" class="tab-content">
+        <div class="tab_container">
+            <app-admin-patients-grid [array]="specialistPatients" [filtered]="specialistPatients" (clinicalRecordSelected)="onClinicalRecordSelected($event)"></app-admin-patients-grid>
+        </div>
+    </div>
+</div>
+<app-admin-records-modal *ngIf="showModal" [item]="selectedPatient" (response)="onModalResponse($event)"></app-admin-records-modal>

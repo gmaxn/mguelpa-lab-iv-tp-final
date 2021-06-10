@@ -40,6 +40,14 @@ export class AppointmentService {
     );
   }
 
+  public getPatientAppointments(patientId: string) {
+    return this.db.collection<Appointment>('/appointments', ref =>
+      ref.where('patient.uid', '==', patientId)
+    ).valueChanges().pipe(
+      catchError(this.handleError)
+    );
+  }
+
   public delteAppointment(uid: string) {
     return this.db.collection("appointments").doc(uid).delete();
   }

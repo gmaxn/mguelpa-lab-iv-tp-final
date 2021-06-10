@@ -1,0 +1,23 @@
+<input type="text" [(ngModel)]="value" readonly name="speciality">
+<button (click)="onShowList()"><i class="fas fa-caret-down"></i></button>
+<div *ngIf="showList && specialities">
+    <div>
+        <div>
+            <table>
+                <tbody>
+                    <tr *ngIf="!filtered.length">
+                        <td (click)="onNewSpeciality(filterTerm)">
+                            Agregar especialidad
+                        </td>
+                    </tr>
+                    <tr *ngFor="let speciality of filtered" (click)="onSpecialitySelection(speciality)">
+                        <td>
+                            {{speciality.name}}
+                        </td>
+                    <tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <input type="text" style="flex:1;" placeholder="filtrar por nombre ... " [(ngModel)]="filterTerm">
+</div>

@@ -1,0 +1,27 @@
+<div id="component-wrapper" style="width:100%">
+    <div id="person-grid-wrapper" class="show-margins" style="width:100%">
+        <div class="layout" id="table-wrapper" style="width:100%">
+            <table *ngIf='users && users.length' style="width:100%">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th style="width:150px">Activo</th>
+                    <th style="width:150px">Inactivo</th>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor='let user of users'>
+                        <td>{{ user.claims.firstname }} {{ user.claims.lastname }}</td>
+                        <td>{{ user.claims.username }}</td>
+                        <td>
+                            <input type="checkbox" name="Admin" [checked]="user.claims.isActiveUser" (change)="changeStatus(user)">
+                        </td>
+                        <td>
+                            <input type="checkbox" name="User" [checked]="!user.claims.isActiveUser" (change)="changeStatus(user)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
