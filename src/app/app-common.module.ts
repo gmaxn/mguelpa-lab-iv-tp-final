@@ -6,6 +6,7 @@ import { AppointmentSelectorComponent } from './components/appointment-request/a
 import { AppointmentModalComponent } from './components/shared/appointment-modal/appointment-modal.component';
 import { PatientRegistrationFormComponent } from "./modules/patient/components/patient-registration-form/patient-registration-form.component";
 import { SpecialistRegistrationFormComponent } from "./modules/specialist/components/specialist-registration/specialist-registration-form/specialist-registration-form.component";
+import { ModalComponent } from "./components/layout/modal/modal.component";
 
 @NgModule({
     imports: [
@@ -18,13 +19,15 @@ import { SpecialistRegistrationFormComponent } from "./modules/specialist/compon
       AppointmentSelectorComponent,
       AppointmentModalComponent,
       PatientRegistrationFormComponent,
-      SpecialistRegistrationFormComponent
+      SpecialistRegistrationFormComponent,
+      ModalComponent
     ],
     exports: [
       CustomCaptchaComponent,
       AppointmentSelectorComponent,
       PatientRegistrationFormComponent,
-      SpecialistRegistrationFormComponent
+      SpecialistRegistrationFormComponent,
+      ModalComponent
     ]
   })
   export class AppCommonModule { }

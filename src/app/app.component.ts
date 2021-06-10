@@ -31,6 +31,8 @@ export class AppComponent {
 
   public isOpen = false;
 
+  public showModal = false;
+
   constructor(
     private _loading: LoadingEventService,
     private _auth: AuthenticationService,

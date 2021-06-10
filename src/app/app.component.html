@@ -34,3 +34,4 @@
 <div id="container" [@routeAnimations]="prepareRoute(o)">
     <router-outlet #o="outlet" (deactivate)='onDeactivate()'></router-outlet>
 </div>
+<app-modal *ngIf="showModal"></app-modal>
