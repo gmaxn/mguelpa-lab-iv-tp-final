@@ -1,12 +1,13 @@
 const firebase = require('firebase');
 const firebaseConfig = {
-    apiKey: "AIzaSyBp1qEtkUusgKv1jPkPFv0bMifvdjoDU9U",
-    authDomain: "mguelpa-lab-iv-tp-clinica.firebaseapp.com",
-    projectId: "mguelpa-lab-iv-tp-clinica",
-    storageBucket: "mguelpa-lab-iv-tp-clinica.appspot.com",
-    messagingSenderId: "833475649362",
-    appId: "1:833475649362:web:4d2b25e34469ddd214248b",
-    measurementId: "G-L7P9FRJFF9"
+    production: true,
+    apiKey: "AIzaSyDMVS3jM_ex6JQplA6BiK-NRUf0LmqA2hw",
+    authDomain: "clinica-online-test.firebaseapp.com",
+    projectId: "clinica-online-test",
+    storageBucket: "clinica-online-test.appspot.com",
+    messagingSenderId: "1009400765364",
+    appId: "1:1009400765364:web:603d199993c53481f270e1",
+    measurementId: "G-EYQ1T93G7J"
 };
   
 const db = firebase.default.initializeApp(firebaseConfig);

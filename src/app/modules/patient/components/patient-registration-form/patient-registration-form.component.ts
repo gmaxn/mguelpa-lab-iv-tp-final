@@ -9,6 +9,7 @@ import { Patient } from 'src/app/models/patient';
 import { UserRegistrationData } from 'src/app/models/user-registration-data';
 import { LoadingEventService } from 'src/app/services/loading-event.service';
 import { MailerService } from 'src/app/services/mailer.service';
+import { ModalEventService } from 'src/app/services/modal-event.service';
 import { PatientValidationService } from '../../services/patient-validation.service';
 import { PatientService } from '../../services/patient.service';
 
@@ -97,7 +98,8 @@ export class PatientRegistrationFormComponent implements OnInit {
     private ps: PatientService,
     private ms: MailerService,
     private _loading: LoadingEventService,
-    private router: Router
+    private router: Router,
+    private modal: ModalEventService
   ) { }
 
   ngOnInit(): void {
@@ -202,7 +204,10 @@ export class PatientRegistrationFormComponent implements OnInit {
       }).finally(() => {
 
         this._loading.emitChange(false);
-        alert("Registro exitoso, revise su email para activar su cuenta.");
+        this.modal.emitChange({
+          data:"Registro exitoso, revise su email para activar su cuenta."
+        });
+        alert();
         this.router.navigate(['signin']);
           
       });

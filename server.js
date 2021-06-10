@@ -29,7 +29,8 @@ app.get('/patient/:id/activate', (req, res) => {
     .update("claims.isActiveUser", true)
     .then(
         ok => {
-            res.send('Usuario activado');
+            alert('Usuario activado');
+            res.redirect('https://mguelpa-lab-iv-tp-final.herokuapp.com/');
         },
         err => {
             res.status(400).send(err);

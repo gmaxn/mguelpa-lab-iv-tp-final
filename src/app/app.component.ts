@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { runInThisContext } from 'vm';
 import { sideNavAnimation, slideInAnimation } from './app-animations.module';
 import { AuthenticationService } from './services/authentication.service';
 import { LoadingEventService } from './services/loading-event.service';
+import { ModalEventService } from './services/modal-event.service';
 import { RouteNameEventService } from './services/route-name-event.service';
 
 @Component({
@@ -36,7 +38,8 @@ export class AppComponent {
   constructor(
     private _loading: LoadingEventService,
     private _auth: AuthenticationService,
-    private _routeName: RouteNameEventService
+    private _routeName: RouteNameEventService,
+    private _modal: ModalEventService
   ) {
     this._loading.changeEmitted$.subscribe(
       value => {
@@ -52,6 +55,11 @@ export class AppComponent {
    this._routeName.changeEmitted$.subscribe(
       value => {
         this.routeName = value;
+      });
+
+    this._modal.changeEmitted$.subscribe(
+      response => {
+        this.showModal = response;
       });
   }
 
