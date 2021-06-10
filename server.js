@@ -30,7 +30,7 @@ app.get('/patient/:id/activate', (req, res) => {
     .then(
         ok => {
             alert('Usuario activado');
-            res.redirect('https://mguelpa-lab-iv-tp-final.herokuapp.com/');
+            res.redirect('https://mguelpa-lab-iv-tp-final.herokuapp.com/signin');
         },
         err => {
             res.status(400).send(err);
