@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Appointment } from 'src/app/models/appointment';
+import { ClinicalRecord } from 'src/app/models/clinical-record';
 
 @Component({
   selector: 'app-specialist-appointments-grid',
@@ -13,6 +14,8 @@ export class SpecialistAppointmentsGridComponent implements OnInit {
   @Input() appointments: Appointment[] = [];
   
   @Input() filtered: Appointment[] = [];
+
+  @Input() records: ClinicalRecord[] = [];
 
   public _filterTerm: string = '';
 

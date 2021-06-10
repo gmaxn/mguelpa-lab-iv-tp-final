@@ -25,7 +25,7 @@ module.exports = (form) => {
         from: "mguelpa.clinica.online@gmail.com",
         to: form.email,
         subject: form.subject,
-        html: `<p> Active su usuario haciendo click <a href="https://mguelpa-lab-iv-tp-clinica.herokuapp.com/patient/${form.uid}/activate">aquí.</a></p>`
+        html: `<p> Active su usuario haciendo click <a href="https://mguelpa-lab-iv-tp-final.herokuapp.com/patient/${form.uid}/activate">aquí.</a></p>`
     };
     
     transporter.sendMail(mailOptions, function (err, info) {
