@@ -1,27 +1,24 @@
-# MguelpaLabIvTpClinica
+# Trabajo Práctico - Clinica Online
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
+## Rutas y características
 
-## Development server
+Dillinger is currently extended with the following plugins.
+Instructions on how to use them in your own application are linked below.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+| MODULE | FEATURE | REQUIRED ROLE | ROUTE |
+| ------ | ------- | ------------- | ----- |
+| App | [Home](#home) | None | https://mguelpa-lab-iv-tp-clinica.herokuapp.com/home |
+| App | [Registro](#registro) | None | https://mguelpa-lab-iv-tp-clinica.herokuapp.com/enrollment |
+| App | [Ingreso](#ingreso) | None | https://mguelpa-lab-iv-tp-clinica.herokuapp.com/signin |
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Home
 
-## Build
+![alt text](https://github.com/gmaxn/mguelpa-lab-iv-2021/blob/mguelpa-lab-iv-tp-clinica-online/src/assets/home-1.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![alt text](https://github.com/gmaxn/mguelpa-lab-iv-2021/blob/mguelpa-lab-iv-tp-clinica-online/src/assets/home-2.png)
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Registro
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Suscripción
