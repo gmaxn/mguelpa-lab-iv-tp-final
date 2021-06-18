@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ModalEventService } from 'src/app/services/modal-event.service';
 
 @Component({
   selector: 'app-modal',
@@ -13,12 +14,22 @@ export class ModalComponent implements OnInit {
 
   @Input() title: string = '';
 
-  constructor() { }
+  constructor(
+    private _modal: ModalEventService
+  ) { }
 
   ngOnInit(): void {
+
+    // this._modal.changeEmitted$.subscribe(res => {
+    //   if(res.config) {
+    //     this.title = res.config.title,
+    //     // this.content = res
+    //   }
+    // })
   }
 
   confirm(appointment: any) {
+    this._modal.emitChange(false);
     this.response.emit({
       succeed: true,
       data: 'confirm'
@@ -26,6 +37,7 @@ export class ModalComponent implements OnInit {
   }
 
   reject() {
+    this._modal.emitChange(false);
     this.response.emit({
       succeed: false,
       data: 'cancel'

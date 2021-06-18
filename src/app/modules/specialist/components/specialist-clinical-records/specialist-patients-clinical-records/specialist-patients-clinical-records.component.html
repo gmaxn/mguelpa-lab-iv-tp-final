@@ -80,7 +80,7 @@
     }
 </style>
 <div *ngIf="clinicalRecords.length" id="header" class="borders">
-  <span class="title">{{clinicalRecords[index].appointment.date | date:'dd/MM/yy'}}</span>
+  <span class="title">{{clinicalRecords[index].appointment.date | customDate}}</span>
 </div>
 
 <div *ngIf="clinicalRecords.length" id="btn_previous" (click)="previous()" class="borders" ><i class="fas fa-caret-left"></i></div>

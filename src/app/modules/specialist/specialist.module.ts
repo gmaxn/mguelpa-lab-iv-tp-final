@@ -16,6 +16,7 @@ import { SpecialistFinalizeModalComponent } from './components/specialist-agenda
 import { SpecialistAppointmentModalComponent } from './components/specialist-agenda/specialist-appointment-modal/specialist-appointment-modal.component';
 import { SpecialistAppointmentsGridComponent } from './components/specialist-agenda/specialist-appointments-grid/specialist-appointments-grid.component';
 import { AppCommonModule } from 'src/app/app-common.module';
+import { SpecialistPatientsComponent } from './routes/specialist-patients/specialist-patients.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AppCommonModule } from 'src/app/app-common.module';
     WeekSchedulerComponent,
     SpecialistAppointmentsGridComponent,
     SpecialistAppointmentModalComponent,
-    SpecialistFinalizeModalComponent
+    SpecialistFinalizeModalComponent,
+    SpecialistPatientsComponent
   ],
   imports: [
     CommonModule,

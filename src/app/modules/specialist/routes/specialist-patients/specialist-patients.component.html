@@ -1,0 +1,30 @@
+<style>
+    
+</style>
+
+<h2 id="header" class="display-5">Mis Pacientes - Clinica OMED</h2>
+
+<div id="container visible-borders">
+    <div id="specialist-list">
+        <!-- <input id="filter" type="text" class="display-3 mt-4" placeholder="Buscá a tus especialistas aquí."> -->
+        <div id="specialist-card" class="mt-5" >
+            <div *ngFor="let patient of specialistPatients" class="justify-content-center align-items-center" style="margin: 10px;">
+                <div class="card p-3">
+                    <div class="center-align">
+                        <div class="image" style="border-radius:50%;">
+                            <img src="{{patient.photoUrls[0]}}" alt="" height="100px" style="border-radius:50%;">
+                        </div>
+                        <div class="ml-3 w-100">
+                            <h4 class="mb-0 mt-0">{{patient.firstname}} {{patient.lastname}}</h4>
+                            <!-- <span>Especializaciones: </span>
+                            <p>{{patient.obrasocial}}</p>
+                            <div class="button mt-2 d-flex flex-row align-items-center"> 
+                                <button class="btn btn-sm btn-outline-primary w-100">Detalles</button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

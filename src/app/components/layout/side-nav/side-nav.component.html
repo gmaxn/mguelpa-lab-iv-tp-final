@@ -3,10 +3,9 @@
     <div *ngIf="isRole(currentUser, 'specialist')"><a routerLink="/specialist/profile"><i class="fas fa-id-card"></i> Mi Perfil</a></div>
     <div *ngIf="isRole(currentUser, 'patient')"><a routerLink="/patient/agenda"><i class="fas fa-calendar-check"></i> Mis Turnos</a></div>
     <div *ngIf="isRole(currentUser, 'specialist')"><a routerLink="/specialist/agenda"><i class="fas fa-calendar-check"></i> Mis Turnos</a></div>
+    <div *ngIf="isRole(currentUser, 'specialist')"><a routerLink="/specialist/patients"><i class="fas fa-book-medical"></i> Mis Pacientes</a></div>
     <div *ngIf="isRole(currentUser, 'specialist')"><a routerLink="/specialist/clinical-records"><i class="fas fa-book-medical"></i> Historias Clínicas</a></div>
     <div *ngIf="isRole(currentUser, 'admin')"><a routerLink="/admin/clinical-records"><i class="fas fa-book-medical"></i> Historias Clínicas</a></div>
-
     <div *ngIf="isRole(currentUser, 'admin')"><a routerLink="/admin/agenda"><i class="far fa-calendar-alt"></i> Turnos</a></div>
     <div *ngIf="isRole(currentUser, 'admin')"><a routerLink="/admin/management"><i class="fas fa-users"></i> Alta Usuarios</a></div>
-
 </div>
