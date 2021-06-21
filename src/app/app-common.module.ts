@@ -7,13 +7,18 @@ import { AppointmentModalComponent } from './components/shared/appointment-modal
 import { PatientRegistrationFormComponent } from "./modules/patient/components/patient-registration-form/patient-registration-form.component";
 import { SpecialistRegistrationFormComponent } from "./modules/specialist/components/specialist-registration/specialist-registration-form/specialist-registration-form.component";
 import { ModalComponent } from "./components/layout/modal/modal.component";
-import { CustomDatePipe } from "./pipes/custom-date.pipe";
+import { CustomDatePipe } from "./utils/pipes/custom-date.pipe";
+import { BadgeDirective } from './utils/directives/badge.directive';
+import { StatusPipe } from './utils/pipes/status.pipe';
+import { PillEnableDirective } from './utils/directives/pill-enable.directive';
+import { ChartsModule } from "ng2-charts";
 
 @NgModule({
     imports: [
       CommonModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      ChartsModule
     ],
     declarations: [
       CustomCaptchaComponent,
@@ -22,7 +27,10 @@ import { CustomDatePipe } from "./pipes/custom-date.pipe";
       PatientRegistrationFormComponent,
       SpecialistRegistrationFormComponent,
       ModalComponent,
-      CustomDatePipe
+      CustomDatePipe,
+      BadgeDirective,
+      StatusPipe,
+      PillEnableDirective,
     ],
     exports: [
       CustomCaptchaComponent,
@@ -30,7 +38,10 @@ import { CustomDatePipe } from "./pipes/custom-date.pipe";
       PatientRegistrationFormComponent,
       SpecialistRegistrationFormComponent,
       ModalComponent,
-      CustomDatePipe
+      CustomDatePipe,
+      BadgeDirective,
+      StatusPipe,
+      PillEnableDirective
     ]
   })
   export class AppCommonModule { }

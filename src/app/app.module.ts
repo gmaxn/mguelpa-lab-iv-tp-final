@@ -21,7 +21,8 @@ import { SpinnerComponent } from './components/layout/spinner/spinner.component'
 import { SigninFormComponent } from './components/layout/signin-form/signin-form.component';
 import { AppCommonModule } from './app-common.module';
 import { AppointmentRequestComponent } from './routes/appointment-request/appointment-request.component';
-import { CustomDatePipe } from './pipes/custom-date.pipe';
+import { CustomDatePipe } from './utils/pipes/custom-date.pipe';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [

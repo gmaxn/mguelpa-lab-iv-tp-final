@@ -140,7 +140,7 @@
 
 
         <div id="pill-container">
-            <div id="pill_{{appointment.date.getTime()}}" class="pill" *ngFor="let appointment of appointments;" [ngClass]="getClass(appointment)" (click)="onSelection(appointment)">
+            <div id="pill_{{appointment.date.getTime()}}" class="pill" *ngFor="let appointment of appointments;" [appPillEnable]="{appointment:appointment, speciality:speciality}" (click)="onSelection(appointment)">
                 {{appointment.date.getTime() | date:'shortTime'}}
             </div>
         </div>

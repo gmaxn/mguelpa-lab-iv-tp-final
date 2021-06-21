@@ -65,7 +65,7 @@ export class AppointmentRequestComponent implements OnInit {
     return roles.filter(r => r !== 'admin' && r !== 'user' && r !== 'specialist' && r !== 'patient')
   }
 
-  switchMode(mode:string, specialist:ProfileInformation<Specialist>) {
+  switchMode(mode: string, specialist: ProfileInformation<Specialist>) {
     this.mode = mode;
     this.selectedSpecialist = specialist;
   }

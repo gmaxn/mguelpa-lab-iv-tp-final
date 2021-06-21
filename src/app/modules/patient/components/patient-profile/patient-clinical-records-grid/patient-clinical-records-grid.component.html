@@ -77,7 +77,7 @@
     }
 </style>
 <div id="header" class="borders">
-  <span class="title">{{clinicalRecords[index].appointment.date | date:'dd/MM/yy'}}</span>
+  <span class="title">{{clinicalRecords[index]?.appointment.date | customDate}} | {{clinicalRecords[index]?.appointment.specialist?.firstname}} {{clinicalRecords[index]?.appointment.specialist?.lastname}}</span>
 </div>
 <div id="btn_previous" (click)="previous()" class="borders" ><i class="fas fa-caret-left"></i></div>
 <div id="date-picker" class="borders">

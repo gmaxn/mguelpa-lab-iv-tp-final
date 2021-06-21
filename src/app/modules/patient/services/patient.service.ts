@@ -34,6 +34,14 @@ export class PatientService {
     );
   }
 
+  public getClinicalRecordsBySpecialistId(patientId:string, specialistId: string) {
+    return this.db.collection<ClinicalRecord>('/clinical-records', ref =>
+      ref.where('appointment.patient.uid', '==', patientId).where('appointment.specialist.uid', '==', specialistId)
+    ).valueChanges().pipe(
+      catchError(this.handleError)
+    );
+  }
+
   public getUserData(uid:string) {
     return this.db.collection<any>("users")
     .doc(uid)

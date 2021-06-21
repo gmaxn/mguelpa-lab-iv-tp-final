@@ -119,12 +119,12 @@ export class AdminUserManagementComponent implements OnInit {
     let result:any[]=[];
     appointments.map(a => {
       result.push({
-        fecha: a.date.toUTCString(),
+        fecha: `${a.date.getDay()}/${a.date.getMonth()}/${a.date.getFullYear()} ${a.date.toLocaleTimeString()}`,
         paciente: `${a.patient.firstname} ${a.patient.firstname}`,
         especialista: `${a.specialist.firstname} ${a.specialist.lastname}`,
         status: a.status
       });
     });
-    this.csv.exportAsExcelFile(result, 'turnos-clinica-omed');
+    this.csv.exportAsExcelFile(result, `turnos-${appointments[0].patient.firstname}-${appointments[0].patient.lastname}`.toLocaleLowerCase());
   }
 }

@@ -58,10 +58,14 @@ export class PatientClinicalRecordsGridComponent implements OnInit {
   }
 
   getValues(index:number, value:string) {
-    return (this.clinicalRecords[index][value]);
+    if(this.clinicalRecords[index]) {
+      return (this.clinicalRecords[index][value]);
+    }
   }
 
   getDynamicFields(index:number) {
-    return this.clinicalRecords[index].dynamic;
+    if(this.clinicalRecords[index]) {
+      return this.clinicalRecords[index].dynamic;
+    }
   }
 }

@@ -249,7 +249,7 @@ export class AppointmentSelectorComponent implements OnInit {
     if (response.data === 'ok') {
       this.selectedAppointment.patient = this.currentUser;
       this.ap.takeAppointment(this.selectedAppointment);
-      this.router.navigate(['patient/appointments'])
+      this.router.navigate(['patient/agenda'])
     }
   }
 }

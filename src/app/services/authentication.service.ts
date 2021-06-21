@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { UserClaims } from '../models/user-claims';
 import { UserCredentials } from '../models/user-credentials';
+import { LoggerService } from './logger.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class AuthenticationService {
     private auth: AngularFireAuth,
     private db: AngularFirestore,
     private router: Router,
+    private logs: LoggerService
     // private logged: LoggedEventService
   ) { }
 
@@ -32,6 +34,7 @@ export class AuthenticationService {
           if(data.claims.isActiveUser) {
             const claims: UserClaims = data.claims;
             localStorage.setItem('userCredentials', JSON.stringify(claims));
+            this.logs.log(data)
             this.logged.next(true);
             resolve(claims);
           }
@@ -39,7 +42,7 @@ export class AuthenticationService {
             reject("El usuario debe ser activado antes de ingresar al sistema por primera vez, para activarlo revise su correo electrónico o contactesé con un administrador.")
           }
         });
-      }).catch(err => reject(err.message));
+      }).catch(err => reject(err.message)).finally();
     });
   }
 

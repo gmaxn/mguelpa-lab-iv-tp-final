@@ -5,10 +5,10 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{user!.photoUrls[0]}}" alt="Admin" class="rounded-circle" width="150">
+                            <img src="{{user?.photoUrls[0]}}" alt="Admin" class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <h4>{{user.firstname}} {{user.lastname}}</h4>
-                                <p class="text-secondary mb-1">Obra Social: {{userData.data.obrasocial}}</p>
+                                <p class="text-secondary mb-1">Obra Social: {{userData?.data.obrasocial}}</p>
                             </div>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                                 <h6 class="mb-0">Nombre</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{user.firstname}} {{user.lastname}}
+                                {{user?.firstname}} {{user?.lastname}}
                             </div>
                         </div>
                         <hr>
@@ -31,7 +31,7 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{user.username}}
+                                {{user?.username}}
                             </div>
                         </div>
                         <hr>
@@ -40,7 +40,7 @@
                                 <h6 class="mb-0">DNI</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{userData.data.dni}}
+                                {{userData?.data.dni}}
                             </div>
                         </div>
                         <hr>
@@ -49,13 +49,39 @@
                                 <h6 class="mb-0">Edad</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{userData.data.age}}
+                                {{userData?.data.age}}
                             </div>
                         </div>
                         <hr>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <button class="btn btn-danger btn-sm" (click)="downloadPDF(user)"><i class="fas fa-file-pdf"></i> Descargar PDF</button>
+                        <div class="row mb-3">
+                            <div class="col-sm-5">
+                                <h6 class="mb-0">Mis Especialistas</h6>
+                            </div>
+                            <div class="col-sm-7 text-secondary">
+                            </div>
+                        </div>
+                        <div class="row d-flex align-items-center">
+                            <div class="col-sm-1">
+                                <button class="btn btn-outline-secondary btn-sm" (click)="previousSpecialist()"><i class="fas fa-chevron-left"></i></button>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div style="display: flex; justify-content: flex-start; align-items: center;">
+                                    <img src="{{specialists[index]?.photoUrls[0]}}" alt="" height="32px" style="border-radius: 50%;margin-right: 10px;">
+                                    <div style="display: flex; flex-direction: column;">
+                                        <small>{{specialists[index]?.firstname}} {{specialists[index]?.lastname}}</small>
+                                        <small>{{specialists[index]?.username}}</small>
+                                    </div>
+                                </div>                        
+                            </div>
+
+
+                            <div class="col-sm-4">
+                                <button class="btn btn-danger btn-sm" (click)="generatePdf('download', user.uid, specialists[index].uid)"><i class="fas fa-file-pdf"></i> Descargar PDF</button>
+                            </div>
+
+                            <div class="col-sm-1">
+                                <button class="btn btn-outline-secondary btn-sm" (click)="nextSpecialist()"><i class="fas fa-chevron-right"></i></button>
                             </div>
                         </div>
                     </div>

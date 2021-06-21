@@ -1,0 +1,57 @@
+<style>
+    :host {
+        display: grid;
+        grid-template-rows: 100px 600px auto;
+        grid-template-columns: auto 800px auto;
+    }
+
+    #tab_container {
+        grid-row: 2;
+        grid-column: 2;
+    }
+
+    #header {
+        grid-row: 1;
+        grid-column: 2;
+        margin:auto;
+    }
+</style>
+<h2 id="header" class="display-5">Estadisticas | Clinica OMED</h2>
+<div id="tab_container">
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-1">Ingresos al sistema</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-2">Turnos por especialidad</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-3">Turnos por día</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-4">Turnos solicitados por médico por lapso de tiempo</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-5">Turnos finalizados por médico por lapso de tiempo</button>
+
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+
+        <div class="tab-pane fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav-patient-tab">
+            <app-logs-grid [logs]="logList"></app-logs-grid>        
+        </div>
+
+        <div class="tab-pane fade" id="nav-2" role="tabpanel" aria-labelledby="nav-specialist-tab">
+            <app-specialities-chart></app-specialities-chart>
+        </div>
+      
+        <div class="tab-pane fade" id="nav-3" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="box visible-borders green">3</div>
+        </div>
+
+        <div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="box visible-borders blue">4</div>
+        </div>   
+        
+        <div class="tab-pane fade" id="nav-5" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="box visible-borders red">5</div>
+        </div>
+
+        <!-- <div class="tab-pane fade" id="nav-6" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="box visible-borders green">6</div>
+        </div> -->
+    </div>
+</div>

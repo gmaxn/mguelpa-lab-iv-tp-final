@@ -1,0 +1,188 @@
+/* #component-wrapper {
+    border-left: 1px solid rgb(222, 226, 230);
+    border-right: 1px solid rgb(222, 226, 230);
+    border-bottom: 1px solid rgb(222, 226, 230);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 30px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    overflow-y: auto;
+  } */
+  
+  #component-wrapper::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  #component-wrapper::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+  
+  #component-wrappe::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  #search-term {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  
+  .layout {
+    /* nav - main - aside - footer */
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    margin: 2px;
+    padding: 2px;
+  }
+  
+  #search-bar {
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+  }
+  
+  #search-bar > input {
+    color: black;
+    margin: 5px;
+    font-family: "Permanent Marker", cursive;
+    width: 100%;
+    height: 25px;
+    border-radius: 8px;
+  }
+  
+  /* button {
+    background-color: #4caf50; 
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 200px;
+    height: 27px;
+    line-height: 7px;
+  }
+   */
+  #table-wrapper {
+    border-radius: 8px;
+    border: 2px solid black;
+    background-color: white;
+    padding: 0px;
+    margin: 0x;
+    box-sizing: content-box;
+  }
+  
+  #table-wrapper > table {
+    font-family: "Consolas", Courier, monospace;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: black;
+    border-radius: 5px;
+  }
+  
+  #table-wrapper > table > thead > tr,
+  th {
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    padding: 2px;
+    text-align: center;
+    border-collapse: collapse;
+    color: white;
+  }
+  
+  #table-wrapper > table > tbody > tr,
+  td {
+    /*border: 1px solid rgb(110, 110, 110);*/
+    padding: 5px;
+    text-align: center;
+  }
+  
+  #table-wrapper > table > tbody > tr:nth-child(even) {
+    background-color: white;
+  }
+  
+  #table-wrapper > table > tbody > tr:nth-child(odd) {
+    background-color: whitesmoke;
+  }
+  
+  #table-wrapper > table > tbody > tr:last-child > td:first-child {
+    border-bottom-left-radius: 5px;
+  }
+  
+  #table-wrapper > table > tbody > tr:last-child > td:last-child {
+    border-bottom-right-radius: 5px;
+  }
+  
+  #table-wrapper > table > tbody > tr:hover {
+    background-color: rgb(255, 240, 120);
+  }
+  
+  #person-grid-wrapper {
+    border: 2px solid black;
+    border-radius: 5px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: white;
+    /* position: absolute;
+      transform: translate(-50%, 0%); */
+    overflow: hidden;
+    max-width: 100%;
+    padding-right: 8px;
+  }
+  
+  #person-grid-wrapper > table {
+    font-family: "Consolas", Courier, monospace;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: black;
+    border-radius: 5px;
+  }
+  
+  #person-grid-wrapper > table > thead > tr,
+  th {
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    padding: 2px;
+    text-align: center;
+    border-collapse: collapse;
+    color: white;
+
+  }
+  
+  #person-grid-wrapper > table > tbody > tr,
+  td {
+    padding: 5px;
+    text-align: center;
+  }
+  
+  #person-grid-wrapper > table > tbody > tr:nth-child(even) {
+    background-color: white;
+  }
+  
+  #person-grid-wrapper > table > tbody > tr:nth-child(odd) {
+    background-color: whitesmoke;
+  }
+  
+  #person-grid-wrapper > table > tbody > tr:last-child > td:first-child {
+    border-bottom-left-radius: 5px;
+  }
+  
+  #person-grid-wrapper > table > tbody > tr:last-child > td:last-child {
+    border-bottom-right-radius: 5px;
+  }
+  
+  #person-grid-wrapper > table > tbody > tr:hover {
+    background-color: rgb(255, 240, 120);
+  }
+  

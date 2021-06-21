@@ -1,0 +1,23 @@
+<div style="border: 2px solid black; border-radius: 10px; padding:1px;">
+    <div id="table-wrapper">
+        <table *ngIf="logs && logs.length > 0">
+            <thead>
+                <tr>
+                    <th>Último logueo</th>
+                    <th>Usuario</th>
+                    <th>Roles</th>
+                    <th>Ingresos al sistema</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let log of logs">
+                    <td>{{log.date | customDate}}</td>
+                    <td>{{log.user}}</td>
+                    <td>{{getRole(log)}}</td>
+
+                    <td>{{log.logs}}</td>
+                </tr>
+            </tbody>      
+        </table>
+    </div>
+</div>

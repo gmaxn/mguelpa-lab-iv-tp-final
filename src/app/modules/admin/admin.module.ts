@@ -14,6 +14,10 @@ import { AdminPatientsGridComponent } from './components/admin-clinical-records/
 import { AdminRecordsModalComponent } from './components/admin-clinical-records/admin-records-modal/admin-records-modal.component';
 import { AdminPatientClinicalRecordsComponent } from './components/admin-clinical-records/admin-patient-clinical-records/admin-patient-clinical-records.component';
 import { AdminPatientGridComponent } from './components/admin-patient-grid/admin-patient-grid.component';
+import { AdminChartComponent } from './routes/admin-chart/admin-chart.component';
+import { LogsGridComponent } from './components/admin-chart/logs-grid/logs-grid.component';
+import { SpecialitiesChartComponent } from './components/admin-chart/specialities-chart/specialities-chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -28,12 +32,16 @@ import { AdminPatientGridComponent } from './components/admin-patient-grid/admin
     AdminRecordsModalComponent,
     AdminPatientClinicalRecordsComponent,
     AdminPatientGridComponent,
+    AdminChartComponent,
+    LogsGridComponent,
+    SpecialitiesChartComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     AppCommonModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ]
 })
 export class AdminModule { }

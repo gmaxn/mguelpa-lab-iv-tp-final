@@ -81,7 +81,6 @@ export class PatientAgendaComponent implements OnInit {
 
   onModalResponse(response:any) {
     switch(response.from) {
-
       case 'rate':
         if(response.succeed) {
           this.selectedAppointment!.rating = response.data;
@@ -89,11 +88,9 @@ export class PatientAgendaComponent implements OnInit {
         }
         this.showModal = false;
       break;
-
       case 'survey':
         this.showModal = false;
       break;
-
       case 'cancel':
         if(response.succeed) {
           this.selectedAppointment!.status = 'cancelled';
