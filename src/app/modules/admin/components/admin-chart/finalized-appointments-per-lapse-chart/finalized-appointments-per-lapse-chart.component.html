@@ -1,0 +1,31 @@
+<div class="form-row p-1 mt-2">
+    <div class="col-md-6 green center-align">
+    </div>
+    <div class="col-md-3 green center-align">
+        <div class="">
+            <label for="validationCustom01">Desde</label>
+            <input type="date" name="" id="" [max]="max" [(ngModel)]="min" (change)="onChange()">
+        </div>
+    </div>
+    <div class="col-md-3 green center-align">
+        <div class="">
+            <label for="validationCustom01">Hasta</label>
+            <input type="date" name="" id="" [min]="min" [(ngModel)]="max" (change)="onChange()">
+        </div>
+    </div>
+</div>
+
+<div *ngIf="groups.length < 1" class="chart-wrapper mt-3 visible-borders box center-align" style="background-color: whitesmoke; color:grey;">
+    No hay información disponible.
+</div>
+
+<div *ngIf="(groups.length > 0 && min !== '' && max !== '')" class="chart-wrapper mt-5">
+    <canvas id="chart" baseChart 
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType">
+  </canvas>
+</div>

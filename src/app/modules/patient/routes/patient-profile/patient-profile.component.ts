@@ -57,7 +57,9 @@ export class PatientProfileComponent implements OnInit {
     private pdfMakerService: PdfMakerService,
     private http: HttpClient
   ) {
-    this.pdfMakerService.load('pdfMake', 'vfsFonts');
+    (window as any).pdfMake.vfs = pdfFontsx.pdfMake.vfs;
+
+    // this.pdfMakerService.load('pdfMake', 'vfsFonts');
    }
 
   ngOnInit(): void {
@@ -83,6 +85,7 @@ export class PatientProfileComponent implements OnInit {
         reader.onloadend = () => {
           var base64data = reader.result;
           this.logo = reader.result as string;
+          console.log(this.logo)
         }
       });
 
@@ -179,6 +182,7 @@ export class PatientProfileComponent implements OnInit {
   ////////////////////////////////////////
 
   generatePdf(action = 'open', patientId:string, specialistId:string) {
+    this.downloaded = false;
     this.patiService.getClinicalRecordsBySpecialistId(patientId, specialistId).subscribe(res => {
       res.map(cr => {
         cr.appointment!.date = new Date((<any>cr.appointment.date).seconds * 1000)
@@ -190,17 +194,16 @@ export class PatientProfileComponent implements OnInit {
           case 'open': 
             pdfMake.createPdf(documentDefinition).open();
             this.downloaded = true;
-            setTimeout(()=>{
-              this.downloaded = false;
-            }, 2000) 
           break;
           case 'print': pdfMake.createPdf(documentDefinition).print(); break;
-          case 'download': pdfMake.createPdf(documentDefinition).download();
-          pdfMake.createPdf(documentDefinition).open();
+          case 'download': 
+          let firstname = res[0].appointment.patient.firstname;
+          let lastname = res[0].appointment.patient.lastname;
+          let now = new Date(Date.now());
+          let date = `${now.getDate()}${now.getMonth()+1}${now.getFullYear()}${now.getHours()}${now.getMinutes()}${now.getSeconds()}`;
+
+          pdfMake.createPdf(documentDefinition).download(`historial-clinico-${firstname}-${lastname}-${date}`);
           this.downloaded = true;
-          setTimeout(()=>{
-            this.downloaded = false;
-          }, 2000);
           break;
           default: pdfMake.createPdf(documentDefinition).open(); break;
         }

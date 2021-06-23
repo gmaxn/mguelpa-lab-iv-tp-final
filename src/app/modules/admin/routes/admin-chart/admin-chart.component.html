@@ -13,7 +13,21 @@
     #header {
         grid-row: 1;
         grid-column: 2;
-        margin:auto;
+        margin: auto;
+    }
+
+    .pdf {
+        position: absolute;
+        left: 500px;
+        bottom: 30px;
+    }
+
+    @media screen and (max-width: 960px) {
+        .pdf {
+            position: absolute;
+            left: 30px;
+            bottom: 30px;
+        }
     }
 </style>
 <h2 id="header" class="display-5">Estadisticas | Clinica OMED</h2>
@@ -23,35 +37,59 @@
             <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#nav-1">Ingresos al sistema</button>
             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-2">Turnos por especialidad</button>
             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-3">Turnos por día</button>
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-4">Turnos solicitados por médico por lapso de tiempo</button>
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-5">Turnos finalizados por médico por lapso de tiempo</button>
-
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-4">Turnos solicitados por médico por
+                lapso de tiempo</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#nav-5">Turnos finalizados por médico por
+                lapso de tiempo</button>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
 
         <div class="tab-pane fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav-patient-tab">
-            <app-logs-grid [logs]="logList"></app-logs-grid>        
+            <app-logs-grid [logs]="logList"></app-logs-grid>
         </div>
 
         <div class="tab-pane fade" id="nav-2" role="tabpanel" aria-labelledby="nav-specialist-tab">
             <app-specialities-chart></app-specialities-chart>
         </div>
-      
+
         <div class="tab-pane fade" id="nav-3" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="box visible-borders green">3</div>
+            <!-- <app-appointments-per-day-chart></app-appointments-per-day-chart> -->
+            <app-appointments-per-day-chart2></app-appointments-per-day-chart2>
+
+
         </div>
 
         <div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="box visible-borders blue">4</div>
-        </div>   
-        
-        <div class="tab-pane fade" id="nav-5" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="box visible-borders red">5</div>
+            <!-- <app-accepted-appointments-per-lapse-chart></app-accepted-appointments-per-lapse-chart> -->
+            <app-accepted-appointments-per-lapse-chart2 (canvas3)="onCanvas3($event)">
+            </app-accepted-appointments-per-lapse-chart2>
+
         </div>
+
+        <div class="tab-pane fade" id="nav-5" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <!-- <app-finalized-appointments-per-lapse-chart></app-finalized-appointments-per-lapse-chart> -->
+            <app-finalized-appointments-per-lapse-chart2 (canvas4)="onCanvas4($event)">
+            </app-finalized-appointments-per-lapse-chart2>
+        </div>
+
+        <button *ngIf="!loading" class="pdf btn btn-danger btn-sm mt-4" (click)="generatePdf()" [disabled]="loading"><i
+                class="fas fa-file-pdf"></i> Descargar Informes</button>
+        <button *ngIf="loading" class="pdf btn btn-danger btn-sm mt-4" (click)="generatePdf()" [disabled]="loading"><i
+                class="fas fa-file-pdf"></i> Descargar Informes <i class="fas fa-hourglass-start"></i></button>
 
         <!-- <div class="tab-pane fade" id="nav-6" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="box visible-borders green">6</div>
         </div> -->
     </div>
 </div>
+
+
+<canvas baseChart id="can1" hidden="true" [datasets]="barChartData" [labels]="barChartLabels"
+    [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+</canvas>
+
+<canvas baseChart id="can2" hidden="true" [datasets]="lineChartData" [labels]="lineChartLabels"
+    [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+    [plugins]="lineChartPlugins">
+</canvas>

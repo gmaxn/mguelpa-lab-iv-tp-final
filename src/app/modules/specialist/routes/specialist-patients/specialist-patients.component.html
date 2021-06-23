@@ -1,30 +1,94 @@
 <style>
-    
+    :host {
+        display: grid;
+        grid-template-rows: 160px auto;
+        grid-template-columns: auto;
+        height: 100%;
+    }
+
+    #header {
+        grid-row: 1;
+        grid-column: 1;
+        margin: auto;
+    }
+
+    #tab-container {
+        grid-row: 2;
+        grid-column: 2;
+        height: 100%;
+    }
+
+    .tab_container {
+        /* border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6; */
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        padding: 15px;
+        height: 100%;
+    }
+
+    #specialist-card {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    #favbutton {
+        margin: 15px;
+        margin-bottom: auto !important;
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+    }
+
+    #favbutton:hover {
+        margin: 8px;
+        border: 5px solid rgba(23, 223, 230, 0.2);
+        box-shadow: 0 0 3px 3px rgb(23 223 230 / 15%);
+
+    }
+
+    #desk {
+        grid-column: 1;
+        grid-row: 2;
+        display: flex;
+    }
+
+    #favcontainer {
+        height: 180px;
+        width: 180px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
 </style>
 
-<h2 id="header" class="display-5">Mis Pacientes - Clinica OMED</h2>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 
-<div id="container visible-borders">
-    <div id="specialist-list">
-        <!-- <input id="filter" type="text" class="display-3 mt-4" placeholder="Buscá a tus especialistas aquí."> -->
-        <div id="specialist-card" class="mt-5" >
-            <div *ngFor="let patient of specialistPatients" class="justify-content-center align-items-center" style="margin: 10px;">
-                <div class="card p-3">
-                    <div class="center-align">
-                        <div class="image" style="border-radius:50%;">
-                            <img src="{{patient.photoUrls[0]}}" alt="" height="100px" style="border-radius:50%;">
-                        </div>
-                        <div class="ml-3 w-100">
-                            <h4 class="mb-0 mt-0">{{patient.firstname}} {{patient.lastname}}</h4>
-                            <!-- <span>Especializaciones: </span>
-                            <p>{{patient.obrasocial}}</p>
-                            <div class="button mt-2 d-flex flex-row align-items-center"> 
-                                <button class="btn btn-sm btn-outline-primary w-100">Detalles</button>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+<h2 id="header" class="display-5 visible-borders">Mis Pacientes - Clinica OMED</h2>
+
+<div id="desk" class="visible-borders">
+
+    <div id="favcontainer" *ngFor="let patient of specialistPatients" class="visible-borders">
+        <div id="favbutton" class="image" style="border-radius:50%;">
+            <img src="{{patient.photoUrls[0]}}" alt="" height="100px" style="border-radius:50%;"
+                title="{{patient.firstname}} {{patient.lastname}}" data-toggle="tooltip" data-placement="top">
+        </div>
+        <div>
+            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
+            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
+            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
+            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
         </div>
     </div>
 </div>
+

@@ -77,7 +77,7 @@
 
 
                             <div class="col-sm-4">
-                                <button class="btn btn-danger btn-sm" (click)="generatePdf('download', user.uid, specialists[index].uid)"><i class="fas fa-file-pdf"></i> Descargar PDF</button>
+                                <button *ngIf="specialists.length > 0" class="btn btn-danger btn-sm" (click)="generatePdf('download', user.uid, specialists[index].uid)"><i class="fas fa-file-pdf"></i> Descargar PDF</button>
                             </div>
 
                             <div class="col-sm-1">
@@ -92,7 +92,7 @@
             <div id="div-title">
                 <h3 class="mb-1" style="align-self:flex-start;">Historial Clínico</h3>
             </div>
-            <div id="div-scheduler" *ngIf="enabled">
+            <div id="div-scheduler" *ngIf="enabled && clinicalRecords.length > 0">
                 <app-patient-clinical-records-grid [clinicalRecords]="clinicalRecords" [filtered]="clinicalRecords"></app-patient-clinical-records-grid>
             </div>
           </div>

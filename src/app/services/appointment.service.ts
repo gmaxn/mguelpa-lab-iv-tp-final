@@ -24,6 +24,23 @@ export class AppointmentService {
     );
   }
 
+  public getAllDateDesc() {
+    return this.db.collection<Appointment>('/appointments', ref =>
+      ref.orderBy('date', 'asc')
+    ).valueChanges().pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  public getAllByDate(date: Date) {
+    console.log(date)
+    return this.db.collection<Appointment>('/appointments', ref =>
+      ref.where('date', '==', date)
+    ).valueChanges().pipe(
+      catchError(this.handleError)
+    );
+  }
+
   public async updateAppointment(appointment: Appointment) {
 
     const docRef = this.db.collection<Appointment>("appointments").doc(appointment.uid);

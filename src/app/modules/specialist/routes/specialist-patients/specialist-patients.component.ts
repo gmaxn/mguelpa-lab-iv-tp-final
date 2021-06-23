@@ -3,6 +3,9 @@ import { UserClaims } from 'src/app/models/user-claims';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { SpecialistService } from '../../services/specialst.service';
 
+// import * as $ from 'jquery';
+
+
 @Component({
   selector: 'app-specialist-patients',
   templateUrl: './specialist-patients.component.html',
@@ -29,6 +32,10 @@ export class SpecialistPatientsComponent implements OnInit {
       })
       this.specialistPatients = patients;
     })
+
+    // $(document).ready(function () {
+    //     $('[data-toggle="tooltip"]').tooltip();
+    // });
   }
 
 }

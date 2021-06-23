@@ -46,7 +46,8 @@ import { ChartsModule } from 'ng2-charts';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AppCommonModule
+    AppCommonModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

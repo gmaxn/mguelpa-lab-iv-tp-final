@@ -1,0 +1,22 @@
+<div class="row p-1 mt-2">
+    <div class="col-md-1 green center-align" (click)="onDatePicker('prev')">
+        <button class="btn btn-outline-primary p-2"><i class="fas fa-chevron-left"></i></button>
+
+    </div>
+    <div class="col-md-10 p-2 green center-align">
+        <button class="btn btn-outline-primary p-2">{{dates[index] | customDate}}</button>
+    </div>
+    <div class="col-md-1 green center-align" (click)="onDatePicker('next')">
+        <button class="btn btn-outline-primary p-2"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</div>
+<div class="chart-wrapper">
+    <canvas baseChart 
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType">
+  </canvas>
+</div>

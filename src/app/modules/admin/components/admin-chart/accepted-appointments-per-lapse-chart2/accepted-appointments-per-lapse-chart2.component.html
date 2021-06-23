@@ -1,0 +1,34 @@
+<div class="form-row p-1 mt-2">
+    <div class="col-md-6 green center-align">
+    </div>
+    <div class="col-md-3 green center-align">
+        <div class="">
+            <label for="validationCustom01">Desde</label>
+            <input type="date" name="" id="" [max]="maxDate" [(ngModel)]="minDate" (change)="onChange()">
+        </div>
+    </div>
+    <div class="col-md-3 green center-align">
+        <div class="">
+            <label for="validationCustom01">Hasta</label>
+            <input type="date" name="" id="" [min]="minDate" [(ngModel)]="maxDate" (change)="onChange()">
+        </div>
+    </div>
+</div>
+
+<div *ngIf="groupByDate.length < 1" class="chart-wrapper mt-3 visible-borders box center-align" style="background-color: whitesmoke; color:grey;">
+    No hay información disponible.
+</div>
+
+<div *ngIf="(groupByDate.length > 0 && _minDate && _maxDate)" class="chart-wrapper mt-5">
+    <div class="chart-wrapper">
+        <canvas id="canvas3" baseChart
+            [datasets]="lineChartData" 
+            [labels]="lineChartLabels" 
+            [options]="lineChartOptions"
+            [colors]="lineChartColors" 
+            [legend]="lineChartLegend" 
+            [chartType]="lineChartType" 
+            [plugins]="lineChartPlugins">
+        </canvas>
+    </div>
+</div>

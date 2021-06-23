@@ -131,7 +131,7 @@ export class SpecialistAppointmentModalComponent implements OnInit {
         const dynamic:any[] = [];
         
         this.clinicalRecord.get('dynamic').controls.map((c: any) => {
-          let value = dynamic.push(JSON.parse(`{"${c.controls.key.value}":"${c.controls.value.value}"}`));
+          let value = dynamic.push(JSON.parse(`{"${c.controls.key.value.replace(' ', '_')}":"${c.controls.value.value}"}`));
         }); 
 
         const clinicalRecord = {}

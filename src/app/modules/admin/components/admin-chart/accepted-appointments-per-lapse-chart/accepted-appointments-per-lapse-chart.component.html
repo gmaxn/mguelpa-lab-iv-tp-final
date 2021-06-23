@@ -1,0 +1,51 @@
+<div class="form-row p-1 mt-2">
+    <div class="col-md-6 green center-align">
+        <!-- <div class="row" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="col-sm-1">
+                <button class="btn btn-outline-secondary btn-sm" (click)="previousSpecialist()"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="col-sm-6 d-flex space-between" *ngIf="specialists && specialists.length > 0">
+                <div style="display: flex; justify-content: flex-start; align-items: center;">
+                    <img src="{{specialists[index]?.claims.photoUrls[0]}}" alt="" height="32px" style="border-radius: 50%;margin-right: 10px;">
+                    <div style="display: flex; flex-direction: column;">
+                        <small>{{specialists[index]?.claims.firstname}} {{specialists[index]?.claims.lastname}}</small>
+                        <small>{{specialists[index]?.claims.username}}</small>
+                    </div>
+                </div>                        
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-danger btn-sm" (click)="generatePdf('download', user.uid, specialists[index].uid)"><i class="fas fa-file-pdf"></i> Descargar PDF</button>
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-outline-secondary btn-sm" (click)="nextSpecialist()"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div> -->
+    </div>
+    <div class="col-md-3 green center-align">
+        <div class="">
+            <label for="validationCustom01">Desde</label>
+            <input type="date" name="" id="" [max]="max" [(ngModel)]="min" (change)="onChange()">
+        </div>
+    </div>
+    <div class="col-md-3 green center-align">
+        <div class="">
+            <label for="validationCustom01">Hasta</label>
+            <input type="date" name="" id="" [min]="min" [(ngModel)]="max" (change)="onChange()">
+        </div>
+    </div>
+</div>
+
+<div *ngIf="groups.length < 1" class="chart-wrapper mt-3 visible-borders box center-align" style="background-color: whitesmoke; color:grey;">
+    No hay información disponible.
+</div>
+
+<div *ngIf="(groups.length > 0 && min !== '' && max !== '')" class="chart-wrapper mt-5">
+    <canvas id="chart" baseChart 
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType">
+  </canvas>
+</div>
