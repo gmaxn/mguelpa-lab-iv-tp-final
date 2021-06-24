@@ -19,9 +19,6 @@
     }
 
     .tab_container {
-        /* border-left: 1px solid #dee2e6;
-    border-right: 1px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6; */
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         padding: 15px;
@@ -46,7 +43,7 @@
     }
 
     #favbutton:hover {
-        margin: 8px;
+        margin: 10px;
         border: 5px solid rgba(23, 223, 230, 0.2);
         box-shadow: 0 0 3px 3px rgb(23 223 230 / 15%);
 
@@ -66,29 +63,213 @@
         align-items: center;
         justify-content: space-around;
     }
+
+    #favcontainer:hover .buttons {
+        visibility: visible !important;
+        transition: opacity 0.3s;
+
+    }
+
+    #favcontainer:hover .tooltips {
+        visibility: visible !important;
+        transition: opacity 0.3s;
+
+    }
+
+    #favcontainer:hover .triangle {
+        visibility: visible !important;
+        transition: opacity 0.3s;
+
+    }
+
+    .tooltips {
+        visibility: hidden;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        font-family: var(--bs-font-sans-serif);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.5;
+        border-radius: 6px;
+        padding: 5px;
+        transition: opacity 0.3s;
+    }
+
+    .tooltips::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+
+    .triangle {
+        visibility: hidden;
+        margin: auto;
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+        border-top: 10px solid red;
+        border-bottom: 0;
+        border-color: #555 transparent transparent transparent;
+    }
+
+
+    app-specialist-patient-review-modal {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+    }
+
+    
+    #fiter {
+        display: block;
+        width: 100%;
+        /* padding: 0.375rem 0; */
+        margin-bottom: 0;
+        line-height: 1.5;
+        color: white;
+        background-color: transparent !important;
+        border: solid transparent;
+        border-width: 1px 0;
+        padding-right: 1rem;
+        padding-left: auto;
+    }
+
+    input {
+        text-align: center;
+        background-color: transparent !important;
+        border: solid transparent;
+        color: grey;
+        width: 85%;
+        border-bottom: 1px solid transparent;
+    }
+
+    input:hover {
+        outline: none;
+        border-bottom: 1px solid rgba(128, 128, 128, .3);
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    ::-webkit-input-placeholder {
+        text-align: center;
+    }
+
+    :-moz-placeholder {
+        text-align: center;
+    }
 </style>
 
-<script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
+<div *ngIf="!selectedPatient" id="header">
+    <h2 class="display-5">Mis Pacientes - Clinica OMED</h2>
 
-<h2 id="header" class="display-5 visible-borders">Mis Pacientes - Clinica OMED</h2>
-
-<div id="desk" class="visible-borders">
-
-    <div id="favcontainer" *ngFor="let patient of specialistPatients" class="visible-borders">
-        <div id="favbutton" class="image" style="border-radius:50%;">
-            <img src="{{patient.photoUrls[0]}}" alt="" height="100px" style="border-radius:50%;"
-                title="{{patient.firstname}} {{patient.lastname}}" data-toggle="tooltip" data-placement="top">
-        </div>
-        <div>
-            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
-            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
-            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
-            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
-        </div>
+    <div class="input-group mb-1">
+        <input id="filter" class="form-control" type="text" placeholder="Buscar pacientes" [(ngModel)]="filterTerm1">
     </div>
 </div>
 
+
+
+<div *ngIf="selectedPatient" id="header">
+    <h2 class="display-5">Reseñas | {{selectedPatient?.firstname}} {{selectedPatient?.lastname}}</h2>
+
+    <div class="input-group mb-1">
+        <input id="filter" class="form-control" type="text" placeholder="Buscar turnos" [(ngModel)]="filterTerm2">
+    </div>
+</div>
+
+<div *ngIf="!selectedPatient" id="desk">
+
+
+    <div id="favcontainer" *ngFor="let patient of filtered1" class="" (click)="onSelection(patient)">
+        <div>
+            <div class="tooltips" style="visibility:hidden">
+                <span class="tooltipstext">{{patient.firstname}} {{patient.lastname}}</span>
+            </div>
+            <div class="triangle"></div>
+        </div>
+        <div id="favbutton" class="image" style="border-radius:50%;">
+            <img src="{{patient.photoUrls[0]}}" alt="" height="100px" style="border-radius:50%;">
+        </div>
+
+        <!-- <div class="buttons" style="visibility:hidden">
+            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
+            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
+            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
+            <button class="btn btn-outline-primary btn-sm" style="border-radius:50%;margin:3px">@</button>
+        </div> -->
+    </div>
+
+</div>
+
+
+<div *ngIf="selectedPatient" id="desk" style="justify-content: center; align-items:center">
+
+    <div id="tab-container">
+        <div id="tab-body" class="tab-content">
+            <div class="tab_container">
+
+
+                <div id="body">
+                    <div id="component-wrapper">
+                        <div id="person-grid-wrapper">
+                            <div id="table-wrapper" class="layout">
+                                <table>
+                                    <thead>
+                                        <th>Fecha</th>
+
+                                        <th>Paciente</th>
+
+                                        <th>Atención</th>
+
+                                        <th>Reseña</th>
+
+                                    </thead>
+                                    <tbody *ngIf="filtered2 && filtered2.length">
+                                        <tr *ngFor="let appointment of filtered2">
+                                            <td>{{ appointment.date | customDate }}</td>
+
+                                            <td>{{ appointment.patient.firstname }} {{ appointment.patient.lastname }}
+                                            </td>
+                                            <td>{{ appointment.speciality }}</td>
+
+
+                                            <!-- <td>{{ patient.lastname }}</td>
+                                        <td>{{ patient.username }}</td> -->
+                                            <!-- <td><img src="{{patient.photoUrls[0]}}" alt="" height="50px"></td>
+                                        <td><img src="{{patient.photoUrls[1]}}" alt="" height="50px"></td> -->
+                                            <td>
+                                                <button *ngIf="appointment.review" class="btn btn-outline-primary"
+                                                    (click)="openReview(appointment)"><i
+                                                        class="fas fa-book-medical"></i></button>
+                                                <button *ngIf="!appointment.review" class="btn btn-outline-secondary">No
+                                                    Tiene</button>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <app-specialist-patient-appointment></app-specialist-patient-appointment> -->
+                <!-- <app-specialist-patients-grid [array]="specialistPatients" [filtered]="specialistPatients" (clinicalRecordSelected)="onClinicalRecordSelected($event)"></app-specialist-patients-grid> -->
+            </div>
+        </div>
+    </div>
+    <!-- <app-specialist-records-modal *ngIf="showModal" [item]="selectedPatient" (response)="onModalResponse($event)"></app-specialist-records-modal> -->
+
+    <!-- <app-specialist-patient-appointment *ngIf="selectedPatient" [patient]="selectedPatient"></app-specialist-patient-appointment> -->
+</div>
+
+<app-specialist-patient-review-modal *ngIf="showModal" [item]="selectedAppointment"
+    (response)="onModalResponse($event)"></app-specialist-patient-review-modal>
+<button *ngIf="selectedPatient" class="btn btn-outline-info"
+    style="position:absolute; float:left; bottom:30px; left:30px;" (click)="reset()">Volver</button>

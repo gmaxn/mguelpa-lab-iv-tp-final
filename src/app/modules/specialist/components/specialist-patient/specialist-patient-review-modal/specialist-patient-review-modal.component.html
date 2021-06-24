@@ -1,0 +1,49 @@
+<div role="document" class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header" style="background-color: rgb(237, 237, 237); color: rgb(89, 88, 88);">
+            <h5 id="exampleModalLabel" class="modal-title">Reseña del turno</h5>
+            <button type="button" class="close" (click)="reject()">
+                <span>×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="item.diagnosis">
+                <label for="">Diagnóstico</label>
+                <div class="form-group">
+                    <textarea class="form-control" disabled>{{item.diagnosis}}</textarea>                
+                </div>  
+            </div>
+            <div *ngIf="item.review">
+                <label for="">Comentarios</label>
+                <div class="form-group">
+                    <textarea class="form-control" disabled>{{item.review}}</textarea>                
+                </div>   
+            </div>
+            <div *ngIf="item.rating">
+                <label for="">Calificación del paciente</label>
+                <div class="form-group mt-3">
+                    <div style="display: flex; justify-content: space-evenly; align-items: center;">
+                        <div [ngClass]="{'active': item.rating === 5}">
+                            <i class="far fa-laugh-beam fa-3x hoverable"></i>
+                        </div>
+                        <div [ngClass]="{'active': item.rating === 4}" >
+                            <i class="far fa-smile-beam fa-3x hoverable"></i>
+                        </div>
+                        <div [ngClass]="{'active': item.rating === 3}">
+                            <i class="far fa-meh fa-3x hoverable"></i>
+                        </div>
+                        <div [ngClass]="{'active': item.rating === 2}">
+                            <i class="far fa-frown fa-3x hoverable"></i>
+                        </div>                    
+                        <div [ngClass]="{'active': item.rating === 1}">
+                            <i class="far fa-angry fa-3x hoverable"></i>  
+                        </div>              
+                    </div>                    
+                </div>   
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger"(click)="reject()">Confirmar</button>
+        </div>
+    </div>
+</div>

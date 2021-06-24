@@ -17,6 +17,8 @@ import { SpecialistAppointmentModalComponent } from './components/specialist-age
 import { SpecialistAppointmentsGridComponent } from './components/specialist-agenda/specialist-appointments-grid/specialist-appointments-grid.component';
 import { AppCommonModule } from 'src/app/app-common.module';
 import { SpecialistPatientsComponent } from './routes/specialist-patients/specialist-patients.component';
+import { SpecialistPatientAppointmentComponent } from './components/specialist-patient/specialist-patient-appointment/specialist-patient-appointment.component';
+import { SpecialistPatientReviewModalComponent } from './components/specialist-patient/specialist-patient-review-modal/specialist-patient-review-modal.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { SpecialistPatientsComponent } from './routes/specialist-patients/specia
     SpecialistAppointmentsGridComponent,
     SpecialistAppointmentModalComponent,
     SpecialistFinalizeModalComponent,
-    SpecialistPatientsComponent
+    SpecialistPatientsComponent,
+    SpecialistPatientAppointmentComponent,
+    SpecialistPatientReviewModalComponent
   ],
   imports: [
     CommonModule,
