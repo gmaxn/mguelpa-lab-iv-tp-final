@@ -12,7 +12,7 @@ disponibilidad, y reciben en ellos pacientes con turno para consulta o tratamien
 30 minutos.” pero los profesionales pueden cambiar la duración según su especialidad. Estos
 profesionales pueden tener más de una especialidad. También contamos con un sector dentro de la clínica que se encarga de la organización y administración de la misma.
 
-![consigna](https://github.com/gmaxn/mguelpa-lab-iv-2021/blob/mguelpa-lab-iv-tp-clinica-online/src/assets/consigna-tp-clinica-2021.pdf)
+![consigna](https://github.com/gmaxn/mguelpa-lab-iv-2021/blob/mguelpa-lab-iv-tp-clinica-online/src/assets/consigna)
 
 ## Instalación y despliegue
 
@@ -37,8 +37,17 @@ Instructions on how to use them in your own application are linked below.
 
 | MODULO| PAGE| ROLE | ROUTE |
 | ------ | ------- | ------------- | ----- |
-| App | [Beinvenida](#home) | -| https://mguelpa-lab-iv-tp-clinica.herokuapp.com/home |
-| App | [Registro](#registro) | -| https://mguelpa-lab-iv-tp-clinica.herokuapp.com/enrollment |
-| App | [Ingreso](#ingreso) | admin| https://mguelpa-lab-iv-tp-clinica.herokuapp.com/signin |
-| App | [Ingreso](#ingreso) | paceinte| https://mguelpa-lab-iv-tp-clinica.herokuapp.com/signin |
-| App | [Ingreso](#ingreso) | administrador| https://mguelpa-lab-iv-tp-clinica.herokuapp.com/signin |
+| App | [Beinvenida](#home) | -| [https://mguelpa-lab-iv-tp-final.herokuapp.com/home](https://mguelpa-lab-iv-tp-final.herokuapp.com/home) |
+| App | [Registro](#registro) | -| [https://mguelpa-lab-iv-tp-final.herokuapp.com/enrollment](https://mguelpa-lab-iv-tp-final.herokuapp.com/enrollment) |
+| App | [Ingreso](#ingreso) | admin| [https://mguelpa-lab-iv-tp-final.herokuapp.com/signin](https://mguelpa-lab-iv-tp-final.herokuapp.com/signin) |
+| App | [Turnos](#ingreso) | usuario | [https://mguelpa-lab-iv-tp-final.herokuapp.com/appointments](https://mguelpa-lab-iv-tp-final.herokuapp.com/appointments) |
+| Patient | [Mi Perfil](#ingreso) | paciente| [https://mguelpa-lab-iv-tp-final.herokuapp.com/patient/profile](https://mguelpa-lab-iv-tp-final.herokuapp.com/patient/profile) |
+| Patient | [Registro](#ingreso) | paciente| [https://mguelpa-lab-iv-tp-final.herokuapp.com/patient/enrollment](https://mguelpa-lab-iv-tp-final.herokuapp.com/patient/enrollment) |
+| Patient | [Mis Turnos](#ingreso) | paciente| [https://mguelpa-lab-iv-tp-final.herokuapp.com/patient/agenda](https://mguelpa-lab-iv-tp-final.herokuapp.com/patient/agenda) |
+| Specialist | [Mi Perfil](#ingreso) | especialista| [https://mguelpa-lab-iv-tp-final.herokuapp.com/specialist/profile](https://mguelpa-lab-iv-tp-final.herokuapp.com/specialist/profile) |
+| Specialist | [Mis Turnos](#ingreso) | especialista| [https://mguelpa-lab-iv-tp-final.herokuapp.com/specialist/agenda](https://mguelpa-lab-iv-tp-final.herokuapp.com/specialist/agenda) |
+| Specialist | [Mis Pacientes](#ingreso) | especialista| [https://mguelpa-lab-iv-tp-final.herokuapp.com/specialist/patients](https://mguelpa-lab-iv-tp-final.herokuapp.com/specialist/patients) |
+| Specialist | [Mis Historias Clinicas](#ingreso) | especialista| [https://mguelpa-lab-iv-tp-final.herokuapp.com/specialist/clinical-records](https://mguelpa-lab-iv-tp-final.herokuapp.com/specialist/clinical-records) |
+| Specialist | [Registro](#ingreso) | especialista| [https://mguelpa-lab-iv-tp-final.herokuapp.com/specialist/enrollment](https://mguelpa-lab-iv-tp-final.herokuapp.com/specialist/enrollment) |
+| Admin | [Informes](#ingreso) | admin| [https://mguelpa-lab-iv-tp-final.herokuapp.com/admin/charts](https://mguelpa-lab-iv-tp-final.herokuapp.com/admin/charts) |
+| Admin | [Activacion de especialistas](#ingreso) | admin| [https://mguelpa-lab-iv-tp-final.herokuapp.com/admin/management](https://mguelpa-lab-iv-tp-final.herokuapp.com/admin/management) |

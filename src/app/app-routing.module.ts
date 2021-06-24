@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, data: { animation: 'HomePage' } },
   { path: 'signin', component: SigninComponent },
   { path: 'appointments', component: AppointmentRequestComponent, data: { animation: 'SpecialistRegistration' }, canActivate: [UserGuardService] },
-
   { path: 'enrollment', component: EnrollmentComponent, data: { animation: 'EnrollmentPage' } },
+  
   { path: 'patient', loadChildren: () => import('./modules/patient/patient.module').then(m => m.PatientModule) },
   { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
   { path: 'specialist', loadChildren: () => import('./modules/specialist/specialist.module').then(m => m.SpecialistModule) }
