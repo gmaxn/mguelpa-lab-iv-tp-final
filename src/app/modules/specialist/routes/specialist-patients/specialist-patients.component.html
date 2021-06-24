@@ -189,7 +189,7 @@
 
     <div id="favcontainer" *ngFor="let patient of filtered1" class="" (click)="onSelection(patient)">
         <div>
-            <div class="tooltips" style="visibility:hidden">
+            <div class="tooltips" appHide>
                 <span class="tooltipstext">{{patient.firstname}} {{patient.lastname}}</span>
             </div>
             <div class="triangle"></div>

@@ -13,7 +13,8 @@
                 <tr *ngFor="let log of logs">
                     <td>{{log.date | customDate}}</td>
                     <td>{{log.user}}</td>
-                    <td>{{getRole(log)}}</td>
+                    <td><span *ngFor="let role of log.roles">{{role | translator}} </span></td>
+                    <!-- <td>{{getRole(log) | translator}}</td> -->
 
                     <td>{{log.logs}}</td>
                 </tr>

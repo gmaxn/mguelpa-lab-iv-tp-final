@@ -1,6 +1,6 @@
 :host() {
-    border: 1px solid blue;
-    border-style: dashed;
+    /* border: 1px solid blue; */
+    /* border-style: dashed; */
 }
 .hoverable:hover {
     color: rgb(0, 102, 255);

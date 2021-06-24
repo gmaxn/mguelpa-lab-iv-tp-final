@@ -12,6 +12,9 @@ import { BadgeDirective } from './utils/directives/badge.directive';
 import { StatusPipe } from './utils/pipes/status.pipe';
 import { PillEnableDirective } from './utils/directives/pill-enable.directive';
 import { ChartsModule } from "ng2-charts";
+import { TranslatorPipe } from './utils/pipes/translator.pipe';
+import { BlurDirective } from './utils/directives/blur.directive';
+import { HideDirective } from './utils/directives/hide.directive';
 
 @NgModule({
     imports: [
@@ -31,6 +34,9 @@ import { ChartsModule } from "ng2-charts";
       BadgeDirective,
       StatusPipe,
       PillEnableDirective,
+      TranslatorPipe,
+      BlurDirective,
+      HideDirective,
     ],
     exports: [
       CustomCaptchaComponent,
@@ -41,7 +47,10 @@ import { ChartsModule } from "ng2-charts";
       CustomDatePipe,
       BadgeDirective,
       StatusPipe,
-      PillEnableDirective
+      PillEnableDirective,
+      TranslatorPipe,
+      BlurDirective,
+      HideDirective
     ]
   })
   export class AppCommonModule { }
