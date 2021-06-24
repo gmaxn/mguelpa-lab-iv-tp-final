@@ -15,10 +15,10 @@ export class HideDirective {
   }
 
   private hide() {
-    this.el.nativeElement.querySelector('div').style.visibility = 'hidden';
+    this.el.nativeElement.children[0].style.visibility = 'hidden';
   }
 
   private show() {
-    this.el.nativeElement.querySelector('div').style.visibility = 'visible';
+    this.el.nativeElement.children[0].style.visibility = 'visible';
   }
 }

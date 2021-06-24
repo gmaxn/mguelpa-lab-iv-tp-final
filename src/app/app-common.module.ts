@@ -15,6 +15,7 @@ import { ChartsModule } from "ng2-charts";
 import { TranslatorPipe } from './utils/pipes/translator.pipe';
 import { BlurDirective } from './utils/directives/blur.directive';
 import { HideDirective } from './utils/directives/hide.directive';
+import { DateTimePipe } from './utils/pipes/date-time.pipe';
 
 @NgModule({
     imports: [
@@ -37,6 +38,7 @@ import { HideDirective } from './utils/directives/hide.directive';
       TranslatorPipe,
       BlurDirective,
       HideDirective,
+      DateTimePipe,
     ],
     exports: [
       CustomCaptchaComponent,
@@ -50,7 +52,8 @@ import { HideDirective } from './utils/directives/hide.directive';
       PillEnableDirective,
       TranslatorPipe,
       BlurDirective,
-      HideDirective
+      HideDirective,
+      DateTimePipe
     ]
   })
   export class AppCommonModule { }

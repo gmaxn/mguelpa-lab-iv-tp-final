@@ -187,9 +187,9 @@
 <div *ngIf="!selectedPatient" id="desk">
 
 
-    <div id="favcontainer" *ngFor="let patient of filtered1" class="" (click)="onSelection(patient)">
+    <div id="favcontainer" *ngFor="let patient of filtered1" class="" (click)="onSelection(patient)" appHide>
         <div>
-            <div class="tooltips" appHide>
+            <div class="tooltips">
                 <span class="tooltipstext">{{patient.firstname}} {{patient.lastname}}</span>
             </div>
             <div class="triangle"></div>

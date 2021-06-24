@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Appointment } from 'src/app/models/appointment';
+import { ClinicalRecord } from 'src/app/models/clinical-record';
 import { UserClaims } from 'src/app/models/user-claims';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -22,6 +23,8 @@ export class SpecialistAgendaComponent implements OnInit {
   
   public showModal: boolean = false;
 
+  public records: ClinicalRecord[] = [];
+
   constructor(
     private authService: AuthenticationService,
     private specService: SpecialistService,
@@ -37,6 +40,10 @@ export class SpecialistAgendaComponent implements OnInit {
         this.appointments = res;
       }
     });
+
+    this.clinService.getClinicalRecords().subscribe(res => {
+      this.records = res;
+    })
   }
 
   trigger(response: any) {

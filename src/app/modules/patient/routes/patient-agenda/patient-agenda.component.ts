@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Appointment } from 'src/app/models/appointment';
+import { ClinicalRecord } from 'src/app/models/clinical-record';
 import { UserClaims } from 'src/app/models/user-claims';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ClinicalRecordService } from 'src/app/services/clinical-record.service';
 import { PatientService } from '../../services/patient.service';
 
 @Component({
@@ -16,7 +18,12 @@ export class PatientAgendaComponent implements OnInit {
 
   public appointments: Appointment[] = [];
 
+  public clinicalRecords: ClinicalRecord[] = []
+
   public selectedAppointment?: Appointment;
+
+  public selectedRecord?: ClinicalRecord;
+
 
   public modalMode?: string;
   
@@ -25,7 +32,8 @@ export class PatientAgendaComponent implements OnInit {
   constructor(
     private authService: AuthenticationService,
     private patiService: PatientService,
-    private appoService: AppointmentService
+    private appoService: AppointmentService,
+    private crService: ClinicalRecordService
   ) { }
 
   ngOnInit(): void {
@@ -34,8 +42,15 @@ export class PatientAgendaComponent implements OnInit {
       next: res => {
         res.map(a => a.date = new Date((<any>a.date).seconds * 1000));
         this.appointments = res;
+        console.log(res)
+
       }
     });
+
+    this.crService.getClinicalRecords().subscribe(res => {
+      this.clinicalRecords = res;
+      console.log(res)
+    })
   }
 
   trigger(response: any) {
@@ -51,6 +66,9 @@ export class PatientAgendaComponent implements OnInit {
         break;
       case 'survey':
         this.survey(response.appointment);
+        break;
+      case 'record':
+        this.record(response.appointment);
         break;
     }
   }
@@ -76,6 +94,13 @@ export class PatientAgendaComponent implements OnInit {
   survey(appointment: Appointment) {
     this.selectedAppointment = appointment;
     this.modalMode = 'survey';
+    this.showModal = true;
+  }
+
+  record(appointment: Appointment) {
+    this.selectedAppointment = appointment;
+    this.selectedRecord = this.clinicalRecords.find(cr => cr.appointment.uid === appointment.uid);
+    this.modalMode = 'record';
     this.showModal = true;
   }
 

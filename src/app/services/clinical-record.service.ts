@@ -16,11 +16,14 @@ export class ClinicalRecordService {
   ) { }
 
   public getClinicalRecords() {
-    return this.db.collection<ClinicalRecord>('/clinical-records', ref =>
-      ref.orderBy("date", "asc")
-      ).valueChanges().pipe(
-        catchError(this.handleError)
-      );
+    return this.db.collection<ClinicalRecord>('clinical-records').valueChanges();
+
+
+    // return this.db.collection<ClinicalRecord>('/clinical-records', ref =>
+    //   ref.orderBy("date", "asc")
+    //   ).valueChanges().pipe(
+    //     catchError(this.handleError)
+    //   );
   }
 
   public getClinicalRecordsByPatientId(patientId:string) {
