@@ -12,7 +12,7 @@ disponibilidad, y reciben en ellos pacientes con turno para consulta o tratamien
 30 minutos.” pero los profesionales pueden cambiar la duración según su especialidad. Estos
 profesionales pueden tener más de una especialidad. También contamos con un sector dentro de la clínica que se encarga de la organización y administración de la misma.
 
-![consigna](https://github.com/gmaxn/mguelpa-lab-iv-2021/blob/mguelpa-lab-iv-tp-clinica-online/src/assets/consigna)
+![consigna](https://github.com/gmaxn/mguelpa-lab-iv-tp-final/blob/master/src/assets/consigna/consigna-tp-clinica-2021.pdf)
 
 ## Instalación y despliegue
 
