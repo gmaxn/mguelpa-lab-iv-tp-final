@@ -9,6 +9,11 @@ Instructions on how to use them in your own application are linked below.
 | ------ | ------- | ------------- | ----- |
 | App | [Home](#home) | None | https://mguelpa-lab-iv-tp-clinica.herokuapp.com/home |
 | App | [Registro](#registro) | None | https://mguelpa-lab-iv-tp-clinica.herokuapp.com/enrollment |
+| App | [Ingreso](#ingreso) | ADMIN | https://mguelpa-lab-iv-tp-clinica.herokuapp.com/signin |
+| App | [Ingreso](#ingreso) | PATIENT | https://mguelpa-lab-iv-tp-clinica.herokuapp.com/signin |
+| App | [Ingreso](#ingreso) | None | https://mguelpa-lab-iv-tp-clinica.herokuapp.com/signin |
+| App | [Ingreso](#ingreso) | None | https://mguelpa-lab-iv-tp-clinica.herokuapp.com/signin |
+| App | [Ingreso](#ingreso) | None | https://mguelpa-lab-iv-tp-clinica.herokuapp.com/signin |
 | App | [Ingreso](#ingreso) | None | https://mguelpa-lab-iv-tp-clinica.herokuapp.com/signin |
 
 
