@@ -23,6 +23,8 @@ export const specialistRegistrationEntersAnimation = trigger('specialistRegistra
 ]);
 
 
+
+
 export const routesSlideinAnimation = trigger('slideInAnimation', [
   // Transition between any two states
   transition('* <=> *', [
@@ -117,7 +119,7 @@ export const slideInAnimation = trigger('routeAnimations', [
     // Events to apply
     // Defined style and animation function to apply
     // Config object with optional set to true to handle when element not yet added to the DOM
-    query(':enter, :leave', style({ position: 'fixed', width: '100%', zIndex: 2 }), { optional: true }),
+    query(':enter, :leave', style({ position: 'fixed', height: '100%', width: '100%', zIndex: 2 }), { optional: true }),
     // group block executes in parallel
     group([
       query(':enter', [
@@ -134,7 +136,7 @@ export const slideInAnimation = trigger('routeAnimations', [
     // Events to apply
     // Defined style and animation function to apply
     // Config object with optional set to true to handle when element not yet added to the DOM
-    query(':enter, :leave', style({ position: 'fixed', width: '100%', zIndex: 2 }), { optional: true }),
+    query(':enter, :leave', style({ position: 'fixed', height: '100%', width: '100%', zIndex: 2 }), { optional: true }),
     // group block executes in parallel
     group([
       query(':enter', [
@@ -151,7 +153,41 @@ export const slideInAnimation = trigger('routeAnimations', [
     // Events to apply
     // Defined style and animation function to apply
     // Config object with optional set to true to handle when element not yet added to the DOM
-    query(':enter, :leave', style({ position: 'fixed', width: '100%', zIndex: 2 }), { optional: true }),
+    query(':enter, :leave', style({ position: 'fixed', height: '100%', width: '100%', zIndex: 2 }), { optional: true }),
+    // group block executes in parallel
+    group([
+      query(':enter', [
+        style({ transform: 'translateY(-100%)' }),
+        animate('0.5s ease-out', style({ transform: 'translateY(0%)' }))
+      ], { optional: true }),
+      query(':leave', [
+        style({ transform: 'translateY(0%)' }),
+        animate('0.5s ease-out', style({ transform: 'translateY(100%)' }))
+      ], { optional: true })
+    ])
+  ]),
+  transition('HomePage <=> LoginPage', [
+    // Events to apply
+    // Defined style and animation function to apply
+    // Config object with optional set to true to handle when element not yet added to the DOM
+    query(':enter, :leave', style({ position: 'fixed', height: '100%', width: '100%', zIndex: 2 }), { optional: true }),
+    // group block executes in parallel
+    group([
+      query(':enter', [
+        style({ transform: 'translateY(-100%)' }),
+        animate('0.5s ease-out', style({ transform: 'translateY(0%)' }))
+      ], { optional: true }),
+      query(':leave', [
+        style({ transform: 'translateY(0%)' }),
+        animate('0.5s ease-out', style({ transform: 'translateY(100%)' }))
+      ], { optional: true })
+    ])
+  ]),
+  transition('EnrollmentPage <=> LoginPage', [
+    // Events to apply
+    // Defined style and animation function to apply
+    // Config object with optional set to true to handle when element not yet added to the DOM
+    query(':enter, :leave', style({ position: 'fixed', height: '100%', width: '100%', zIndex: 2 }), { optional: true }),
     // group block executes in parallel
     group([
       query(':enter', [
@@ -165,3 +201,4 @@ export const slideInAnimation = trigger('routeAnimations', [
     ])
   ])
 ]);
+

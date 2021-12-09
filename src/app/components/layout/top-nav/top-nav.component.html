@@ -96,7 +96,7 @@
     <div *ngIf="logged" id="btn_signin" class="my_btn" (click)="signout()" style="width:100px !important;">
         <span style="margin-right: 10px;">Logout</span> <img src="./../../../../assets/users.png" style="height:20px;">
     </div>
-    <div id="btn_signin" class="my_btn" (click)="goToSignupPage()" style="width:100px !important;">
+    <div *ngIf="!logged" id="btn_signin" class="my_btn" (click)="goToSignupPage()" style="width:100px !important;">
         <span style="margin-right: 10px;"> Registro</span><i class="fas fa-user-plus"></i>
     </div>
     <div id="mid_bar">

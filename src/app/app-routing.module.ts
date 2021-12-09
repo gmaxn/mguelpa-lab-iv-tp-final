@@ -9,7 +9,7 @@ import { UserGuardService } from './services/user-guard.service';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent, data: { animation: 'HomePage' } },
-  { path: 'signin', component: SigninComponent },
+  { path: 'signin', component: SigninComponent, data: { animation: 'LoginPage' }},
   { path: 'appointments', component: AppointmentRequestComponent, data: { animation: 'SpecialistRegistration' }, canActivate: [UserGuardService] },
   { path: 'enrollment', component: EnrollmentComponent, data: { animation: 'EnrollmentPage' } },
   
